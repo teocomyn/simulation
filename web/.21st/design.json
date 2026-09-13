@@ -1,0 +1,43 @@
+{
+  "name": "Dossier Simulation",
+  "decisions": [
+    {
+      "date": "2026-09-12",
+      "direction": "Revue papier",
+      "reason": "Le rendu sombre initial était trop générique et trop dense pour un dossier de recherche. Identité de revue : papier chaud, encre, cachet oxblood, sommation typographique."
+    },
+    {
+      "date": "2026-09-12",
+      "direction": "Sans-serif only, Montserrat + Geist",
+      "reason": "Plus aucune serif. Montserrat pour les titres et le mot-signe, Geist pour le corps et l'UI, Geist Mono pour le code."
+    },
+    {
+      "date": "2026-09-12",
+      "direction": "Fiabilité de lecture",
+      "reason": "Liens dossiers, TOC d'article, recherche plein texte, menu dialogué, metadata, méthode et glossaire. Le fond scientifique n'a pas changé."
+    },
+    {
+      "date": "2026-09-13",
+      "direction": "Couverture shader Mesh drift",
+      "reason": "Hero plein écran : shader 21st derrière le mot-signe SIMULATION, decrypt-text pour l'arrivée du titre, random letter swap sur le menu. Le dossier papier commence juste après."
+    },
+    {
+      "date": "2026-09-13",
+      "direction": "Orientation continue du dossier",
+      "reason": "Header adaptatif sur la couverture, ancres de page, TOC mobile, temps de lecture, sauts de section, filtres explorer et cibles tactiles. Le lecteur sait toujours où il est et où aller ensuite."
+    },
+    {
+      "date": "2026-09-13",
+      "direction": "Identité Mesh drift",
+      "reason": "Le site entier reprend les couleurs du shader d'accueil : abysse #031c26, bleu #1b6ca8, cyan #5ad2f4, brume #eaf9ff. Plus de papier chaud ni d'oxblood. Une seule lumière, de la couverture au corpus."
+    }
+  ],
+  "tokens": {
+    "paper": "#071920",
+    "ink": "#fffdf8",
+    "accent": "#5ad2f4",
+    "abyss": "#031c26",
+    "mid": "#1b6ca8",
+    "mist": "#eaf9ff"
+  }
+}

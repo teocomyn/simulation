@@ -1,0 +1,444 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+
+:root {
+  --void: #010d12;
+  --bg: #031c26;
+  --bg-2: #062430;
+  --bg-3: #0a3140;
+  --bg-4: #0f3d50;
+  --paper: #071920;
+  --line: #1a4554;
+  --line-2: #2d6a7e;
+  --ink: #fffdf8;
+  --ink-2: #eaf9ff;
+  --muted: #9ec8d6;
+  --dim: #8ab6c6;
+  --brass: #5ad2f4;
+  --brass-2: #8adef7;
+  --mid: #1b6ca8;
+  --good: #5ed9a8;
+  --warn: #e8c36a;
+  --bad: #f07178;
+  --info: #5ad2f4;
+  --spec: #9b8ad4;
+  --seal: #5ad2f4;
+}
+
+@theme inline {
+  --color-void: var(--void);
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-bg-3: var(--bg-3);
+  --color-bg-4: var(--bg-4);
+  --color-paper: var(--paper);
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-dim: var(--dim);
+  --color-brass: var(--brass);
+  --color-brass-2: var(--brass-2);
+  --color-mid: var(--mid);
+  --color-good: var(--good);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+  --color-info: var(--info);
+  --color-spec: var(--spec);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+}
+
+html {
+  background: var(--bg);
+  color: var(--ink);
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100%;
+  background:
+    radial-gradient(ellipse at 16% -12%, rgba(27, 108, 168, 0.42), transparent 48%),
+    radial-gradient(ellipse at 92% 118%, rgba(90, 210, 244, 0.12), transparent 40%),
+    var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-variant-ligatures: none;
+  font-feature-settings: "ss01" on;
+}
+
+::selection {
+  background: rgba(90, 210, 244, 0.28);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 80;
+  background: var(--brass);
+  color: #031c26;
+  padding: 0.5rem 0.8rem;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+.kicker {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brass);
+  font-weight: 600;
+}
+
+.display {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+
+.rule {
+  height: 1px;
+  background: var(--line);
+  border: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.65rem 1.1rem;
+  font-size: 0.92rem;
+  line-height: 1;
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.btn-primary {
+  background: var(--brass);
+  color: #031c26;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: var(--brass-2);
+}
+
+.btn-ghost {
+  border: 1px solid var(--line-2);
+  color: var(--ink);
+  background: transparent;
+}
+
+.btn-ghost:hover {
+  background: var(--brass);
+  color: #031c26;
+  border-color: var(--brass);
+}
+
+.surface {
+  background: linear-gradient(180deg, rgba(234, 249, 255, 0.045), transparent 42%), var(--paper);
+  border: 1px solid var(--line);
+}
+
+.surface:hover {
+  border-color: rgba(90, 210, 244, 0.42);
+}
+
+.masthead-shadow {
+  box-shadow: 0 1px 0 var(--line);
+}
+
+.site-header {
+  transition: background-color 220ms ease, box-shadow 220ms ease, color 220ms ease;
+}
+
+.header-cover {
+  background: linear-gradient(180deg, rgba(3, 28, 38, 0.55), transparent);
+  color: #fffdf8;
+}
+
+.page-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.page-jump a {
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(90, 210, 244, 0.28);
+  background: rgba(90, 210, 244, 0.08);
+  padding: 0 0.75rem;
+  font-size: 0.82rem;
+  color: var(--ink-2);
+}
+
+.page-jump a:hover {
+  border-color: var(--brass);
+  color: var(--ink);
+}
+
+#sommaire,
+#parcours,
+#resultats,
+#ontologie,
+#corpus {
+  scroll-margin-top: 6rem;
+}
+
+.answer-block {
+  max-width: 68ch;
+}
+
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--brass);
+  z-index: 60;
+  transform-origin: 0 50%;
+}
+
+.prose-dossier {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.12rem;
+  line-height: 1.7;
+  color: var(--ink-2);
+  max-width: 68ch;
+}
+
+.prose-dossier > :first-child {
+  margin-top: 0;
+}
+
+.prose-dossier h1,
+.prose-dossier h2,
+.prose-dossier h3,
+.prose-dossier h4 {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  line-height: 1.2;
+  scroll-margin-top: 6rem;
+}
+
+.prose-dossier h1 {
+  font-size: 2.35rem;
+  margin: 0 0 1.3rem;
+}
+
+.prose-dossier h2 {
+  font-size: 1.65rem;
+  margin: 2.8rem 0 0.85rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.heading-anchor {
+  margin-left: 0.4rem;
+  color: var(--dim);
+  font-size: 0.72em;
+  font-weight: 500;
+  text-decoration: none;
+  opacity: 0.55;
+}
+
+.heading-anchor:hover,
+.heading-anchor:focus-visible {
+  color: var(--brass);
+  opacity: 1;
+}
+
+.prose-dossier h3 {
+  font-size: 1.28rem;
+  margin: 2rem 0 0.65rem;
+}
+
+.prose-dossier h4 {
+  font-size: 1.08rem;
+  margin: 1.5rem 0 0.45rem;
+  color: var(--brass);
+}
+
+.prose-dossier p {
+  margin: 0 0 1.15rem;
+}
+
+.prose-dossier a {
+  color: var(--brass);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.prose-dossier a:hover {
+  color: var(--brass-2);
+}
+
+.prose-dossier strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.prose-dossier blockquote {
+  margin: 1.7rem 0;
+  padding: 0.15rem 0 0.15rem 1.15rem;
+  border-left: 2px solid var(--brass);
+  color: var(--ink);
+  font-style: italic;
+}
+
+.prose-dossier ul,
+.prose-dossier ol {
+  margin: 0 0 1.2rem;
+  padding-left: 1.25rem;
+}
+
+.prose-dossier li {
+  margin: 0.35rem 0;
+}
+
+.prose-dossier hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 2.2rem 0;
+}
+
+.prose-dossier pre {
+  background: var(--void);
+  color: var(--ink-2);
+  padding: 1.05rem 1.15rem;
+  overflow-x: auto;
+  margin: 1.4rem 0;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.prose-dossier code {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.84em;
+  background: rgba(90, 210, 244, 0.12);
+  padding: 0.07em 0.32em;
+  color: var(--brass);
+}
+
+.prose-dossier .katex,
+.prose-dossier .katex-html {
+  color: var(--ink);
+}
+
+.prose-dossier pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  margin: 1.4rem 0 1.8rem;
+}
+
+.prose-dossier table {
+  width: 100%;
+  min-width: 32rem;
+  border-collapse: collapse;
+  margin: 0;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.prose-dossier th,
+.prose-dossier td {
+  border: 1px solid var(--line);
+  padding: 0.55rem 0.7rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose-dossier th {
+  background: var(--bg-2);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.prose-dossier td {
+  background: var(--paper);
+  color: var(--ink-2);
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.35rem 0;
+  color: var(--ink);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.42rem;
+  border: 1px solid currentColor;
+  vertical-align: 0.1em;
+  line-height: 1;
+}
+
+.inverse {
+  background: var(--void);
+  color: var(--ink);
+  border-top: 1px solid var(--line);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media print {
+  .skip-link,
+  header,
+  footer,
+  .progress,
+  .btn,
+  aside {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #111;
+  }
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #444;
+  }
+}

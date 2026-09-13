@@ -1,0 +1,37 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "sync-corpus": "rm -rf corpus && mkdir -p corpus && for d in 00-SYNTHESE.md 01-ARGUMENT 02-PHYSIQUE 03-CONSCIENCE 04-ONTOLOGIE 05-COSMOLOGIE 06-ETHIQUE 07-SOCIOLOGIE 08-PROTOCOLE 09-SOURCES 10-ACTUALISATION 11-MATHEMATIQUES 12-BIOCOMPUTING 13-RECEPTION; do cp -R \"../$d\" \"corpus/$d\"; done",
+    "dev": "npm run sync-corpus && next dev",
+    "build": "npm run sync-corpus && next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test": "npx --yes tsx --test lib/links.test.ts"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "fuse.js": "^7.5.0",
+    "katex": "^0.18.7",
+    "motion": "^13.2.0",
+    "next": "16.3.5",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-markdown": "^10.1.0",
+    "rehype-katex": "^7.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
+    "tailwind-merge": "^3.7.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.5",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
