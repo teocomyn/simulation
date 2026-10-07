@@ -21,6 +21,7 @@ A research dossier on the simulation hypothesis, constituted 29 August 2026. The
 
 ## Architecture
 
-- Content-only. Local prototype until the user asks to deploy.
+- Content-only. Déployé sur Vercel depuis GitHub (`teocomyn/simulation`, branche `main`, root directory `web`), déploiement automatique à chaque push sur `main`.
+- Production : https://simulation42.vercel.app (alias simulation-gamma-seven.vercel.app). Projet Vercel `simulation`, équipe `t4c2s-projects` (plan Pro préexistant ; ce projet n'a créé aucun coût fixe supplémentaire). Aucune autre ressource payante.
 - No Supabase, no Vertical Network tenancy, no Resend.
 - Related product-network rules do not apply.
