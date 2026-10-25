@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { HomeHero } from "@/components/HomeHero";
+import { latestUpdate } from "@/lib/dates";
 import { JsonLd } from "@/components/JsonLd";
 import { StarLegend } from "@/components/StarLegend";
 import { docs, sections } from "@/lib/catalog";
@@ -21,7 +22,7 @@ export default function HomePage() {
   return (
     <main>
       <JsonLd data={faqFromQuestions()} />
-      <HomeHero docCount={docs.length} sectionCount={sections.length} />
+      <HomeHero docCount={docs.length} sectionCount={sections.length} updated={latestUpdate()} />
 
       <section id="sommaire" className="border-b border-line">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
@@ -94,7 +95,7 @@ export default function HomePage() {
               <StarLegend className="mt-3" />
               <p className="mt-4 text-sm leading-6 text-muted">
                 Wolpert, sous-détermination, conscience, DishBrain, réception. Le dossier tient
-                sans lire les 38 textes d&apos;un trait.
+                sans lire les {docs.length} textes d&apos;un trait.
               </p>
               <Link href="/explorer" className="btn btn-ghost mt-6">
                 Ouvrir le corpus

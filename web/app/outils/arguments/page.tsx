@@ -1,24 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { popularArguments } from "@/lib/data/arguments";
-import { readQuery, writeQuery } from "@/lib/query-state";
+import { useLocationSearch, writeQuery } from "@/lib/query-state";
 
 export default function ArgumentsPage() {
-  const [id, setId] = useState(popularArguments[0].id);
+  const fromUrl = new URLSearchParams(useLocationSearch()).get("a");
+  const [picked, setPicked] = useState<string | null>(null);
+  const id = picked ?? (popularArguments.some((a) => a.id === fromUrl) ? fromUrl! : popularArguments[0].id);
   const active = popularArguments.find((a) => a.id === id) ?? popularArguments[0];
 
-  useEffect(() => {
-    const next = readQuery().get("a");
-    if (next && popularArguments.some((a) => a.id === next)) setId(next);
-  }, []);
-
-  useEffect(() => {
-    const q = new URLSearchParams();
-    q.set("a", id);
-    writeQuery(q);
-  }, [id]);
+  function setId(next: string) {
+    setPicked(next);
+    writeQuery(new URLSearchParams({ a: next }));
+  }
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-14 sm:px-6">

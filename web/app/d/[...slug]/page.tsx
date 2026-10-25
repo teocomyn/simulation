@@ -7,15 +7,16 @@ import { JsonLd } from "@/components/JsonLd";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { ReadingProgress } from "@/components/ReadingProgress";
 import { StarLegend } from "@/components/StarLegend";
-import { adjacentDocs, docs, getDoc, getSection, relatedPivots } from "@/lib/catalog";
+import { adjacentDocs, docHref, docs, getDoc, getSection, relatedPivots } from "@/lib/catalog";
 import { loadDoc } from "@/lib/content";
+import { docDates } from "@/lib/dates";
 import { extractHeadings, instrumentsForDoc } from "@/lib/links";
 import { plainText, readingMinutes } from "@/lib/plain";
 import { breadcrumbJsonLd, scholarlyArticleJsonLd } from "@/lib/schema";
-import { DATE_PUBLISHED, SITE_NAME, formatDateFr } from "@/lib/seo";
+import { SITE_NAME, docOgImage, formatDateFr } from "@/lib/seo";
 
 export async function generateStaticParams() {
-  return docs.map((d) => ({ slug: d.slug.split("/") }));
+  return docs.filter((d) => d.slug !== "synthese").map((d) => ({ slug: d.slug.split("/") }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string[] }> }) {
@@ -23,18 +24,27 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const meta = getDoc(slug.join("/"));
   if (!meta) return {};
   const section = getSection(meta.section);
+  const image = { url: docOgImage(meta.slug), width: 1200, height: 630, alt: meta.title };
+  const dates = docDates(meta);
   return {
     title: meta.title,
     description: meta.thesis,
-    alternates: { canonical: `/d/${meta.slug}` },
+    alternates: { canonical: docHref(meta.slug) },
     openGraph: {
       type: "article",
       title: meta.title,
       description: meta.thesis,
-      publishedTime: DATE_PUBLISHED,
-      modifiedTime: DATE_PUBLISHED,
+      publishedTime: dates.published,
+      modifiedTime: dates.updated,
       section: section?.title,
       tags: [SITE_NAME, section?.title ?? meta.section, "hypothèse de simulation"],
+      images: [image],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: meta.title,
+      description: meta.thesis,
+      images: [image.url],
     },
   };
 }
@@ -50,6 +60,7 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
   const tools = instrumentsForDoc(doc.slug);
   const minutes = readingMinutes(plainText(doc.markdown));
   const more = relatedPivots(doc.slug);
+  const dates = docDates(doc);
 
   return (
     <main className="relative">
@@ -57,8 +68,10 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
         data={scholarlyArticleJsonLd({
           title: doc.title,
           description: doc.thesis,
-          path: `/d/${doc.slug}`,
+          path: docHref(doc.slug),
           section: section?.title,
+          datePublished: dates.published,
+          dateModified: dates.updated,
         })}
       />
       <JsonLd
@@ -66,7 +79,7 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
           { name: "Accueil", path: "/" },
           { name: "Corpus", path: "/explorer" },
           { name: section?.title ?? doc.section, path: `/s/${doc.section}` },
-          { name: doc.title, path: `/d/${doc.slug}` },
+          { name: doc.title, path: docHref(doc.slug) },
         ])}
       />
       <ReadingProgress />
@@ -83,8 +96,8 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
           <span className="text-ink">{doc.title}</span>
         </nav>
 
-        <div className="mt-8 grid gap-12 lg:grid-cols-[minmax(0,1fr)_16.5rem]">
-          <article>
+        <div className="mt-8 grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,1fr)_16.5rem]">
+          <article className="min-w-0">
             <p className="kicker">
               {section?.number} · {section?.title}
               {doc.starred ? " · texte pivot" : ""}
@@ -92,11 +105,13 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
             <h1 className="display mt-4 text-4xl text-ink sm:text-5xl">{doc.title}</h1>
             <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
               <p className="text-sm text-muted">
-                <time dateTime={DATE_PUBLISHED}>Arrêté au {formatDateFr()}</time>
+                <time dateTime={dates.updated}>
+                  {dates.updated === dates.published ? "Publié le" : "Mis à jour le"} {formatDateFr(dates.updated)}
+                </time>
                 <span className="mx-2 text-dim">·</span>
                 {minutes} min de lecture
               </p>
-              <CopyLink path={`/d/${doc.slug}`} />
+              <CopyLink path={docHref(doc.slug)} />
             </div>
             <div className="answer-block mt-5 border-l-2 border-brass bg-paper px-5 py-4">
               <p className="font-display text-xl italic leading-snug text-ink">{doc.thesis}</p>
@@ -119,7 +134,7 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
                 <ul className="mt-5 grid gap-3 sm:grid-cols-3">
                   {more.map((d) => (
                     <li key={d.slug}>
-                      <Link href={`/d/${d.slug}`} className="surface block min-h-11 p-4">
+                      <Link href={docHref(d.slug)} className="surface block min-h-11 p-4">
                         <span className="font-display text-lg text-ink">{d.title}</span>
                         <span className="mt-2 block text-sm leading-6 text-muted">{d.thesis}</span>
                       </Link>
@@ -130,7 +145,7 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
             ) : null}
             <nav className="mt-10 grid gap-3 border-t border-line pt-8 sm:grid-cols-2">
               {prev ? (
-                <Link href={`/d/${prev.slug}`} className="surface p-4">
+                <Link href={docHref(prev.slug)} className="surface p-4">
                   <span className="text-[11px] tracking-[0.14em] text-dim uppercase">Précédent</span>
                   <span className="mt-1 block font-display text-lg text-ink">{prev.title}</span>
                 </Link>
@@ -138,14 +153,14 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
                 <div />
               )}
               {next ? (
-                <Link href={`/d/${next.slug}`} className="surface p-4 sm:text-right">
+                <Link href={docHref(next.slug)} className="surface p-4 sm:text-right">
                   <span className="text-[11px] tracking-[0.14em] text-dim uppercase">Suivant</span>
                   <span className="mt-1 block font-display text-lg text-ink">{next.title}</span>
                 </Link>
               ) : null}
             </nav>
           </article>
-          <aside className="h-fit space-y-8 bg-paper p-5 ring-1 ring-line lg:sticky lg:top-24">
+          <aside className="h-fit min-w-0 space-y-8 bg-paper p-5 ring-1 ring-line lg:sticky lg:top-24">
             <div className="hidden lg:block">
               <ArticleToc headings={headings} />
             </div>
@@ -176,7 +191,7 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
                   .map((d) => (
                     <li key={d.slug}>
                       <Link
-                        href={`/d/${d.slug}`}
+                        href={docHref(d.slug)}
                         className={`block text-sm leading-5 ${d.slug === doc.slug ? "text-brass" : "text-muted hover:text-ink"}`}
                       >
                         {d.title}
@@ -186,7 +201,7 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
                   ))}
               </ul>
             </div>
-            <CiteBlock title={doc.title} path={`/d/${doc.slug}`} />
+            <CiteBlock title={doc.title} path={docHref(doc.slug)} date={dates.updated} />
           </aside>
         </div>
       </div>

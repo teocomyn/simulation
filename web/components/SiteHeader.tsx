@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { RandomLetterSwap } from "@/components/ui/random-letter-swap";
 import { sections } from "@/lib/catalog";
 import { BrandMark } from "./BrandMark";
@@ -15,39 +15,37 @@ const nav = [
   { href: "/sources", label: "Sources" },
 ];
 
+function subscribeScroll(onChange: () => void) {
+  window.addEventListener("scroll", onChange, { passive: true });
+  window.addEventListener("hashchange", onChange);
+  window.addEventListener("resize", onChange);
+  return () => {
+    window.removeEventListener("scroll", onChange);
+    window.removeEventListener("hashchange", onChange);
+    window.removeEventListener("resize", onChange);
+  };
+}
+
+/** L'en-tête reste transparent tant que le haut de l'accueil est visible. */
+function heroInView() {
+  return !window.location.hash && window.scrollY < window.innerHeight * 0.62;
+}
+
 export function SiteHeader() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [open, setOpen] = useState(false);
-  const [overHero, setOverHero] = useState(isHome);
+  const [openedAt, setOpenedAt] = useState(pathname);
+  const overHero = useSyncExternalStore(subscribeScroll, heroInView, () => true);
   const panelRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const cover = isHome && overHero && !open;
 
-  useEffect(() => {
+  // Le menu se referme quand la page change (ajustement pendant le rendu, sans effet).
+  if (openedAt !== pathname) {
+    setOpenedAt(pathname);
     setOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
-    if (!isHome) {
-      setOverHero(false);
-      return;
-    }
-    const sync = () => {
-      if (window.location.hash) {
-        setOverHero(false);
-        return;
-      }
-      setOverHero(window.scrollY < window.innerHeight * 0.62);
-    };
-    sync();
-    window.addEventListener("scroll", sync, { passive: true });
-    window.addEventListener("hashchange", sync);
-    return () => {
-      window.removeEventListener("scroll", sync);
-      window.removeEventListener("hashchange", sync);
-    };
-  }, [isHome]);
+  }
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -111,7 +109,6 @@ export function SiteHeader() {
                 <RandomLetterSwap
                   label={item.label}
                   staggerDuration={0.025}
-                  transition={{ duration: 0.6, type: "spring" }}
                 />
                 {active ? <span className="absolute inset-x-0 -bottom-0.5 h-px bg-brass" /> : null}
               </Link>
@@ -165,7 +162,6 @@ export function SiteHeader() {
                   <RandomLetterSwap
                     label={item.label}
                     staggerDuration={0.03}
-                    transition={{ duration: 0.65, type: "spring" }}
                     className="text-3xl"
                   />
                 </Link>

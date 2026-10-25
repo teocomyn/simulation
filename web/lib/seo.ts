@@ -71,13 +71,16 @@ export function pageMeta({
   description,
   path,
   type = "website",
+  image,
 }: {
   title: string;
   description: string;
   path: string;
   type?: "website" | "article";
+  image?: string;
 }): Metadata {
   const url = absoluteUrl(path);
+  const images = [{ url: image ?? DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: title }];
   return {
     title,
     description,
@@ -89,11 +92,20 @@ export function pageMeta({
       type,
       locale: "fr_FR",
       siteName: SITE_NAME,
+      images,
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: images.map((i) => i.url),
     },
   };
+}
+
+/** Image de partage par défaut, générée par app/opengraph-image.tsx. */
+export const DEFAULT_OG_IMAGE = "/opengraph-image";
+
+export function docOgImage(slug: string) {
+  return `/og/${slug}`;
 }

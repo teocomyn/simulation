@@ -1,5 +1,6 @@
 "use client";
 
+import { docHref } from "@/lib/catalog";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
@@ -14,14 +15,36 @@ export type SearchItem = {
   body?: string;
 };
 
-export function SearchBox({ items, initialQuery = "" }: { items: SearchItem[]; initialQuery?: string }) {
+/**
+ * Recherche plein texte. La liste d'aperçu arrive avec la page ; l'index complet
+ * (texte intégral des documents) est téléchargé à part, depuis /search-index.json.
+ */
+export function SearchBox({ preview, initialQuery = "" }: { preview: SearchItem[]; initialQuery?: string }) {
   const router = useRouter();
   const pathname = usePathname();
   const params = useSearchParams();
   const [q, setQ] = useState(params.get("q") ?? initialQuery);
+  const [index, setIndex] = useState<SearchItem[] | null>(null);
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    let alive = true;
+    fetch("/search-index.json")
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+      .then((data: SearchItem[]) => {
+        if (alive) setIndex(data);
+      })
+      .catch(() => {
+        if (alive) setFailed(true);
+      });
+    return () => {
+      alive = false;
+    };
+  }, []);
+
   const fuse = useMemo(
     () =>
-      new Fuse(items, {
+      new Fuse(index ?? preview, {
         keys: [
           { name: "title", weight: 2 },
           { name: "thesis", weight: 1.4 },
@@ -32,9 +55,14 @@ export function SearchBox({ items, initialQuery = "" }: { items: SearchItem[]; i
         threshold: 0.32,
         ignoreLocation: true,
       }),
-    [items],
+    [index, preview],
   );
-  const results = q.trim() ? fuse.search(q).slice(0, 24) : items.slice(0, 12).map((item) => ({ item }));
+  const results = q.trim() ? fuse.search(q).slice(0, 24) : preview.slice(0, 12).map((item) => ({ item }));
+  const status = !q.trim()
+    ? "Aperçu du corpus"
+    : `${results.length} texte${results.length > 1 ? "s" : ""}${
+        index ? "" : failed ? " · titres et thèses seulement" : " · chargement du texte intégral…"
+      }`;
 
   useEffect(() => {
     const next = q.trim();
@@ -55,7 +83,7 @@ export function SearchBox({ items, initialQuery = "" }: { items: SearchItem[]; i
         />
       </label>
       <p className="mt-3 text-sm text-muted">
-        {q.trim() ? `${results.length} texte${results.length > 1 ? "s" : ""}` : "Aperçu du corpus"}
+        {status}
       </p>
       {results.length === 0 ? (
         <p className="mt-8 text-sm leading-6 text-muted">
@@ -65,7 +93,7 @@ export function SearchBox({ items, initialQuery = "" }: { items: SearchItem[]; i
       <ul className="mt-5 space-y-3">
         {results.map(({ item }) => (
           <li key={item.slug}>
-            <Link href={`/d/${item.slug}`} className="surface block min-h-11 p-4">
+            <Link href={docHref(item.slug)} className="surface block min-h-11 p-4">
               <span className="text-[11px] tracking-[0.14em] text-dim uppercase">{item.section}</span>
               <span className="mt-1 block font-display text-xl text-ink">{item.title}</span>
               <span className="mt-1 block text-sm text-muted">{item.thesis}</span>

@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { formatDateFr } from "@/lib/seo";
+import { SITE_NAME, formatDateFr } from "@/lib/seo";
 
-export function CiteBlock({ title, path }: { title: string; path: string }) {
+export function CiteBlock({ title, path, date }: { title: string; path: string; date: string }) {
   const [copied, setCopied] = useState(false);
-  const citation = `Dossier Simulation. « ${title} ». ${formatDateFr()}.`;
+  const citation = `${SITE_NAME}. « ${title} ». Version du ${formatDateFr(date)}.`;
 
   return (
     <div className="border-t border-line pt-4">

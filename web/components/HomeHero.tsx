@@ -1,29 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { BrandMark } from "@/components/BrandMark";
 import { DecryptText } from "@/components/ui/decrypt-text";
 import { ShaderBackground } from "@/components/ui/kk";
+import { useHydrated, useReducedMotion } from "@/lib/client-hooks";
+import { formatDateFr } from "@/lib/seo";
 
 export function HomeHero({
   docCount,
   sectionCount,
+  updated,
 }: {
   docCount: number;
   sectionCount: number;
+  updated: string;
 }) {
-  const [reduce, setReduce] = useState(false);
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    setReady(true);
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sync = () => setReduce(mq.matches);
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
-  }, []);
+  const reduce = useReducedMotion();
+  const ready = useHydrated();
 
   return (
     <section
@@ -58,15 +52,15 @@ export function HomeHero({
       <div className="relative z-10 mx-auto flex min-h-[calc(100svh-4.25rem)] max-w-6xl flex-col justify-between px-4 py-10 sm:px-6 sm:py-14">
         <div className="flex items-center justify-between gap-4 text-[#eaf9ff]/70">
           <p className="text-[0.68rem] font-semibold tracking-[0.2em] text-[#5ad2f4] uppercase">
-            Vol. 00 · 29 août 2026
+            Mis à jour le {formatDateFr(updated)}
           </p>
           <p className="hidden font-mono text-xs tracking-[0.16em] uppercase sm:block">
             {docCount} textes · {sectionCount} sections
           </p>
         </div>
 
-        <div className="grid items-end gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(16rem,0.6fr)]">
-          <div>
+        <div className="grid grid-cols-[minmax(0,1fr)] items-end gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(16rem,0.6fr)]">
+          <div className="min-w-0">
             {ready ? (
               <DecryptText
                 as="h1"
@@ -77,10 +71,10 @@ export function HomeHero({
                 stagger={38}
                 startDelay={180}
                 retriggerOnHover={false}
-                className="display !w-auto max-w-none text-[clamp(3.4rem,16vw,9.5rem)] font-semibold tracking-[-0.06em] text-[#fffdf8]"
+                className="display !w-auto max-w-none text-[clamp(2.75rem,14vw,9.5rem)] font-semibold tracking-[-0.06em] text-[#fffdf8]"
               />
             ) : (
-              <h1 className="display max-w-none text-[clamp(3.4rem,16vw,9.5rem)] font-semibold tracking-[-0.06em] text-[#fffdf8]">
+              <h1 className="display max-w-none text-[clamp(2.75rem,14vw,9.5rem)] font-semibold tracking-[-0.06em] text-[#fffdf8]">
                 SIMULATION
               </h1>
             )}

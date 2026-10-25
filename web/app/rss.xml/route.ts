@@ -1,19 +1,21 @@
-import { docs } from "@/lib/catalog";
+import { docHref, docs } from "@/lib/catalog";
+import { docDates, latestUpdate, rfc822 } from "@/lib/dates";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, absoluteUrl, siteOrigin } from "@/lib/seo";
 
 export const dynamic = "force-static";
 
 export function GET() {
   const base = siteOrigin();
-  const items = docs
+  const items = [...docs]
+    .sort((a, b) => (docDates(a).updated < docDates(b).updated ? 1 : -1))
     .map(
       (d) => `    <item>
       <title>${escapeXml(d.title)}</title>
-      <link>${absoluteUrl(`/d/${d.slug}`)}</link>
-      <guid isPermaLink="true">${absoluteUrl(`/d/${d.slug}`)}</guid>
+      <link>${absoluteUrl(docHref(d.slug))}</link>
+      <guid isPermaLink="true">${absoluteUrl(docHref(d.slug))}</guid>
       <description>${escapeXml(d.thesis)}</description>
       <category>${escapeXml(d.section)}</category>
-      <pubDate>Sat, 29 Aug 2026 00:00:00 GMT</pubDate>
+      <pubDate>${rfc822(docDates(d).updated)}</pubDate>
     </item>`,
     )
     .join("\n");
@@ -27,7 +29,7 @@ export function GET() {
     <description>${escapeXml(SITE_DESCRIPTION)}</description>
     <language>fr</language>
     <copyright>${escapeXml(SITE_TAGLINE)}</copyright>
-    <lastBuildDate>Sat, 29 Aug 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>${rfc822(latestUpdate())}</lastBuildDate>
 ${items}
   </channel>
 </rss>

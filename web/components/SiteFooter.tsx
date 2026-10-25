@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { docs } from "@/lib/catalog";
 import { BrandMark } from "./BrandMark";
 
 export function SiteFooter() {
@@ -27,7 +28,7 @@ export function SiteFooter() {
               Instruments
             </Link>
             <Link href="/explorer" className="inline-flex min-h-11 items-center hover:text-ink">
-              38 textes
+              {docs.length} textes
             </Link>
             <Link href="/sources" className="inline-flex min-h-11 items-center hover:text-ink">
               Sources

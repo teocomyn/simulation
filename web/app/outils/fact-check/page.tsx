@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import { factcheckSummary, factchecks, type CheckMark } from "@/lib/data/factcheck";
 import { factcheckGroupHref } from "@/lib/links";
-import { readQuery, writeQuery } from "@/lib/query-state";
+import { useLocationSearch, writeQuery } from "@/lib/query-state";
 
 const labels: Record<CheckMark, string> = {
   exact: "Exact",
@@ -20,30 +20,28 @@ const colors: Record<CheckMark, string> = {
   unknown: "text-info",
 };
 
+function isMark(value: string | null): value is CheckMark {
+  return value === "exact" || value === "nuance" || value === "false" || value === "unknown";
+}
+
 export default function FactCheckPage() {
-  const [filter, setFilter] = useState<CheckMark | "all">("all");
+  const fromUrl = new URLSearchParams(useLocationSearch()).get("v");
+  const [picked, setPicked] = useState<CheckMark | "all" | null>(null);
+  const filter: CheckMark | "all" = picked ?? (isMark(fromUrl) ? fromUrl : "all");
   const items = useMemo(
     () => (filter === "all" ? factchecks : factchecks.filter((f) => f.verdict === filter)),
     [filter],
   );
 
-  useEffect(() => {
-    const next = readQuery().get("v");
-    if (next === "exact" || next === "nuance" || next === "false" || next === "unknown") {
-      setFilter(next);
-    }
-  }, []);
-
-  useEffect(() => {
-    const q = new URLSearchParams();
-    if (filter !== "all") q.set("v", filter);
-    writeQuery(q);
-  }, [filter]);
+  function setFilter(next: CheckMark | "all") {
+    setPicked(next);
+    writeQuery(new URLSearchParams(next === "all" ? {} : { v: next }));
+  }
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
       <p className="kicker">09 · Sources</p>
-      <h1 className="mt-3 font-display text-4xl text-ink">51 affirmations du corpus fourni</h1>
+      <h1 className="mt-3 font-display text-4xl text-ink">{factcheckSummary.total} affirmations du corpus de départ</h1>
       <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">
         {(["exact", "nuance", "false", "unknown"] as const).map((k) => (
           <button

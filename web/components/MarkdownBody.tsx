@@ -6,15 +6,14 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import Link from "next/link";
 import { flattenText, prettyLinkLabel, rewriteCorpusHref, slugifyHeading, uniqueHeadingId } from "@/lib/links";
+import { isStatusLabel, statusPattern } from "@/lib/status";
 import { StatusBadge } from "./StatusBadge";
-
-const STATUS_RE =
-  /\[(ÉTABLI|ETABLI|DÉBATTU|DEBATTU|SPÉCULATIF|SPECULATIF|NON ÉTABLI|NON ETABLI|NON SCIENTIFIQUE|TESTABLE|À VÉRIFIER|A VERIFIER|PROBABLEMENT FAUSSE|PRÉDICTION VRAISEMBLABLEMENT FAUSSE|PRÉDICTION PROBABLEMENT FAUSSE|MÉTHODE VALIDE|VALIDE COMME MÉTHODE|PROGRAMME DE RECHERCHE ACTIF|PROGRAMME ACTIF|HYPOTHÈSE PAR DÉFAUT|FORMALISÉ[^\]]*|MÉTA-HYPOTHÈSE|PHILOSOPHIQUE|PROBLÉMATIQUE|CONTESTÉ|OUVERT|PUBLIÉ, CONTESTÉ|SOLIDE, MAIS SURINTERPRÉTÉ|SOURCE DE CONFUSION)\]/gi;
+import { stripEmDashes } from "@/lib/copy";
 
 function decorate(text: string) {
   const parts: ReactNode[] = [];
   let last = 0;
-  const re = new RegExp(STATUS_RE.source, "gi");
+  const re = statusPattern();
   let m: RegExpExecArray | null;
   while ((m = re.exec(text))) {
     if (m.index > last) parts.push(text.slice(last, m.index));
@@ -112,6 +111,12 @@ function makeComponents(): Components {
     h2: heading("h2"),
     h3: heading("h3"),
     h4: heading("h4"),
+    code({ className, children }) {
+      if (typeof children === "string" && !className && isStatusLabel(children)) {
+        return <StatusBadge>{children.trim()}</StatusBadge>;
+      }
+      return <code className={className}>{children}</code>;
+    },
     table({ children }) {
       return (
         <div className="table-scroll">
@@ -136,9 +141,7 @@ export function MarkdownBody({
         rehypePlugins={[rehypeKatex]}
         components={makeComponents()}
       >
-        {(skipFirstH1 ? markdown.replace(/^#\s.+\n+/, "") : markdown)
-          .replace(/\s*—\s*/g, ", ")
-          .replace(/—/g, ", ")}
+        {stripEmDashes(skipFirstH1 ? markdown.replace(/^#\s.+\n+/, "") : markdown)}
       </Markdown>
     </div>
   );

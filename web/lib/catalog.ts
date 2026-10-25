@@ -432,6 +432,11 @@ export function getDoc(slug: string) {
   return docs.find((d) => d.slug === slug);
 }
 
+/** URL publique d'un texte. La synthèse a sa propre page, /synthese. */
+export function docHref(slug: string) {
+  return slug === "synthese" ? "/synthese" : `/d/${slug}`;
+}
+
 export function docsInSection(id: SectionId) {
   return docs.filter((d) => d.section === id);
 }

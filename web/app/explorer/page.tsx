@@ -5,7 +5,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   title: "Explorer le dossier",
-  description: "38 textes du corpus Simulation, section par section, avec filtre des textes pivots.",
+  description: `${docs.length} textes du corpus Simulation, section par section, avec filtre des textes pivots.`,
   path: "/explorer",
 });
 

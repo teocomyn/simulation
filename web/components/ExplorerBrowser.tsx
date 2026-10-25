@@ -1,5 +1,6 @@
 "use client";
 
+import { docHref } from "@/lib/catalog";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { StarLegend } from "@/components/StarLegend";
@@ -66,7 +67,7 @@ export function ExplorerBrowser({
               <ul className="mt-4 grid gap-3 md:grid-cols-2">
                 {items.map((d) => (
                   <li key={d.slug}>
-                    <Link href={`/d/${d.slug}`} className="surface block min-h-11 p-4">
+                    <Link href={docHref(d.slug)} className="surface block min-h-11 p-4">
                       <span className="font-display text-lg text-ink">
                         {d.title}
                         {d.starred ? <span className="ml-2 text-brass">★</span> : null}

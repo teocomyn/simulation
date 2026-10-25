@@ -3,6 +3,7 @@
 import * as React from "react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { useHydrated, useReducedMotion } from "@/lib/client-hooks";
 
 /* Decrypt Text — from Motiq (https://motiq.dev/components/decrypt-text).
    MIT licensed. Zero runtime dependencies. */
@@ -14,17 +15,6 @@ function cn(...inputs: ClassValue[]): string {
   return twMerge(clsx(inputs));
 }
 
-function useReducedMotion(): boolean {
-  const [reduced, setReduced] = React.useState(false);
-  React.useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduced(mq.matches);
-    const onChange = (e: MediaQueryListEvent) => setReduced(e.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
-  return reduced;
-}
 
 function useVisibilityPause<T extends Element>(
   ref: React.RefObject<T | null>,
@@ -120,14 +110,15 @@ function DecryptTextBase({
   const playedRef = React.useRef(false);
   const runRef = React.useRef(0);
   const onDecryptedRef = React.useRef(onDecrypted);
-  onDecryptedRef.current = onDecrypted;
+  React.useLayoutEffect(() => {
+    onDecryptedRef.current = onDecrypted;
+  });
 
   const uid = React.useId().replace(/[^a-zA-Z0-9]/g, "");
   const scope = `mk-dt-${uid}`;
 
   const systemReduced = useReducedMotion();
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
+  const mounted = useHydrated();
   const reduceNow = reducedMotion ?? systemReduced;
   const reduce = reducedMotion ?? (mounted ? systemReduced : false);
 
@@ -164,6 +155,9 @@ function DecryptTextBase({
       el.dataset.state = "plain";
     }
   }, []);
+
+  // Référence stable vers la dernière version de play, pour la relance en boucle.
+  const playRef = React.useRef<() => void>(() => {});
 
   const play = React.useCallback(() => {
     const rng = makeRng(seed + runRef.current * 7919);
@@ -211,7 +205,7 @@ function DecryptTextBase({
         if (loop !== false && loop > 0) {
           timerRef.current = setTimeout(() => {
             timerRef.current = null;
-            play();
+            playRef.current();
           }, loop);
         }
         return;
@@ -220,6 +214,10 @@ function DecryptTextBase({
     };
     rafRef.current = requestAnimationFrame(frame);
   }, [jitter, loop, pool, seed, speed, stagger, startDelay, stop]);
+
+  React.useLayoutEffect(() => {
+    playRef.current = play;
+  }, [play]);
 
   React.useLayoutEffect(() => {
     if (reduceNow) {

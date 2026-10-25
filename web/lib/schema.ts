@@ -1,4 +1,4 @@
-import type { Doc, Section } from "@/lib/catalog";
+import { docHref, type Doc, type Section } from "@/lib/catalog";
 import { questions } from "@/lib/data/questions";
 import {
   DATE_PUBLISHED,
@@ -70,11 +70,15 @@ export function scholarlyArticleJsonLd({
   description,
   path,
   section,
+  datePublished = DATE_PUBLISHED,
+  dateModified = DATE_PUBLISHED,
 }: {
   title: string;
   description: string;
   path: string;
   section?: string;
+  datePublished?: string;
+  dateModified?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -84,8 +88,8 @@ export function scholarlyArticleJsonLd({
     name: title,
     abstract: description,
     description,
-    datePublished: DATE_PUBLISHED,
-    dateModified: DATE_PUBLISHED,
+    datePublished,
+    dateModified,
     inLanguage: IN_LANGUAGE,
     isPartOf: { "@id": absoluteUrl("/#website") },
     author: { "@id": absoluteUrl("/#organization") },
@@ -151,7 +155,7 @@ export function docToArticleInput(doc: Doc) {
   return {
     title: doc.title,
     description: doc.thesis,
-    path: `/d/${doc.slug}`,
+    path: docHref(doc.slug),
   };
 }
 
@@ -160,11 +164,13 @@ export function webPageJsonLd({
   description,
   path,
   type = "WebPage",
+  dateModified = DATE_PUBLISHED,
 }: {
   title: string;
   description: string;
   path: string;
   type?: "WebPage" | "AboutPage" | "CollectionPage";
+  dateModified?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -174,7 +180,7 @@ export function webPageJsonLd({
     url: absoluteUrl(path),
     inLanguage: IN_LANGUAGE,
     datePublished: DATE_PUBLISHED,
-    dateModified: DATE_PUBLISHED,
+    dateModified,
     isPartOf: { "@id": absoluteUrl("/#website") },
     speakable: {
       "@type": "SpeakableSpecification",

@@ -1,4 +1,4 @@
-import { docs } from "@/lib/catalog";
+import { docHref, docs, sections } from "@/lib/catalog";
 import { instruments } from "@/lib/nav-index";
 import { SITE_NAME, SITE_TAGLINE, absoluteUrl } from "@/lib/seo";
 
@@ -16,13 +16,13 @@ export function GET() {
 - [Synthèse](${absoluteUrl("/synthese")}): Position d'ensemble : Q1–Q4, verdict sur Bostrom, Règle 0, verrou conscience.
 - [Méthode](${absoluteUrl("/methode")}): Source de vérité markdown, Règle 0, ce que le dossier n'affirme pas, date d'arrêt.
 - [Glossaire](${absoluteUrl("/glossaire")}): Q1–Q4, H1–H8, A1–A12, P1–P14, BF, Règle 0.
-- [Explorer le corpus](${absoluteUrl("/explorer")}): 38 textes dans l'ordre des 14 sections, avec filtre pivots.
+- [Explorer le corpus](${absoluteUrl("/explorer")}): ${docs.length} textes dans l'ordre des ${sections.length} sections, avec filtre pivots.
 - [Sources](${absoluteUrl("/sources")}): Bibliographie primaire et fact-check des 51 affirmations.
 - [Instruments](${absoluteUrl("/outils")}): Trilemme, Bayes, ontologie, arguments, décohérence, protocole.
 
 ## Textes pivots
 
-${pivots.map((d) => `- [${d.title}](${absoluteUrl(`/d/${d.slug}`)}): ${d.thesis}`).join("\n")}
+${pivots.map((d) => `- [${d.title}](${absoluteUrl(docHref(d.slug))}): ${d.thesis}`).join("\n")}
 
 ## Instruments
 

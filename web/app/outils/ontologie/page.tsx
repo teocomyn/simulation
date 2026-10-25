@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { chain, hypotheses, type Hypothesis } from "@/lib/data/ontologies";
-import { readQuery, writeQuery } from "@/lib/query-state";
+import { useLocationSearch, writeQuery } from "@/lib/query-state";
 
 const compat: Record<Hypothesis["compatibleH2"], string> = {
   exclusive: "Exclusive de H2",
@@ -14,19 +14,14 @@ const compat: Record<Hypothesis["compatibleH2"], string> = {
 };
 
 export default function OntologieToolPage() {
-  const [active, setActive] = useState(hypotheses[0]);
+  const fromUrl = new URLSearchParams(useLocationSearch()).get("h");
+  const [picked, setPicked] = useState<Hypothesis | null>(null);
+  const active = picked ?? hypotheses.find((h) => h.id === fromUrl) ?? hypotheses[0];
 
-  useEffect(() => {
-    const id = readQuery().get("h");
-    const found = hypotheses.find((h) => h.id === id);
-    if (found) setActive(found);
-  }, []);
-
-  useEffect(() => {
-    const q = new URLSearchParams();
-    q.set("h", active.id);
-    writeQuery(q);
-  }, [active]);
+  function setActive(next: Hypothesis) {
+    setPicked(next);
+    writeQuery(new URLSearchParams({ h: next.id }));
+  }
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-14 sm:px-6">

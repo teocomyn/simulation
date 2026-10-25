@@ -5,10 +5,11 @@ import { CopyLink } from "@/components/CopyLink";
 import { JsonLd } from "@/components/JsonLd";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { loadDoc } from "@/lib/content";
+import { docDates } from "@/lib/dates";
 import { extractHeadings } from "@/lib/links";
 import { plainText, readingMinutes } from "@/lib/plain";
 import { breadcrumbJsonLd, scholarlyArticleJsonLd } from "@/lib/schema";
-import { pageMeta } from "@/lib/seo";
+import { docOgImage, formatDateFr, pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   title: "Synthèse",
@@ -16,6 +17,7 @@ export const metadata = pageMeta({
     "Position d'ensemble du Dossier Simulation : quatre questions séparées, verdict sur Bostrom, verrou de la conscience, Règle 0.",
   path: "/synthese",
   type: "article",
+  image: docOgImage("synthese"),
 });
 
 export default async function SynthesePage() {
@@ -23,6 +25,7 @@ export default async function SynthesePage() {
   if (!doc) return null;
   const headings = extractHeadings(doc.markdown);
   const minutes = readingMinutes(plainText(doc.markdown));
+  const dates = docDates(doc);
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-14 sm:px-6">
@@ -32,6 +35,8 @@ export default async function SynthesePage() {
           description: doc.thesis,
           path: "/synthese",
           section: "Synthèse",
+          datePublished: dates.published,
+          dateModified: dates.updated,
         })}
       />
       <JsonLd
@@ -43,7 +48,11 @@ export default async function SynthesePage() {
       <p className="kicker">00 · Point d&apos;entrée</p>
       <h1 className="display mt-3 text-4xl text-ink sm:text-5xl">Synthèse</h1>
       <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
-        <p className="text-sm text-muted">{minutes} min de lecture</p>
+        <p className="text-sm text-muted">
+          <time dateTime={dates.updated}>Mis à jour le {formatDateFr(dates.updated)}</time>
+          <span className="mx-2 text-dim">·</span>
+          {minutes} min de lecture
+        </p>
         <CopyLink path="/synthese" />
       </div>
       <p className="answer-block mt-4 text-lg text-muted">{doc.thesis}</p>
@@ -64,7 +73,7 @@ export default async function SynthesePage() {
         </Link>
       </div>
       <div className="mt-10">
-        <CiteBlock title="Synthèse du dossier" path="/synthese" />
+        <CiteBlock title="Synthèse du dossier" path="/synthese" date={dates.updated} />
       </div>
     </main>
   );

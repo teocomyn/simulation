@@ -1,30 +1,32 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { readQuery, writeQuery } from "@/lib/query-state";
+import { useState } from "react";
+import { useLocationSearch, writeQuery } from "@/lib/query-state";
+
+type Params = { p1: number; p2: number; prior: number };
+
+const DEFAULTS: Params = { p1: 0.5, p2: 0.5, prior: 1 };
+
+function fromSearch(search: string): Params {
+  const q = new URLSearchParams(search);
+  const num = (key: keyof Params, min: number, max: number) => {
+    const value = Number(q.get(key));
+    return q.has(key) && Number.isFinite(value) ? Math.min(max, Math.max(min, value)) : DEFAULTS[key];
+  };
+  return { p1: num("p1", 0.01, 1), p2: num("p2", 0.01, 1), prior: num("prior", 0.1, 10) };
+}
 
 export function BayesLab() {
-  const [p1, setP1] = useState(0.5);
-  const [p2, setP2] = useState(0.5);
-  const [prior, setPrior] = useState(1);
-  const [ready, setReady] = useState(false);
+  const search = useLocationSearch();
+  const [override, setOverride] = useState<Params | null>(null);
+  const params = override ?? fromSearch(search);
+  const { p1, p2, prior } = params;
 
-  useEffect(() => {
-    const q = readQuery();
-    if (q.has("p1")) setP1(Number(q.get("p1")));
-    if (q.has("p2")) setP2(Number(q.get("p2")));
-    if (q.has("prior")) setPrior(Number(q.get("prior")));
-    setReady(true);
-  }, []);
-
-  useEffect(() => {
-    if (!ready) return;
-    const q = new URLSearchParams();
-    q.set("p1", String(p1));
-    q.set("p2", String(p2));
-    q.set("prior", String(prior));
-    writeQuery(q);
-  }, [p1, p2, prior, ready]);
+  function update(patch: Partial<Params>) {
+    const next = { ...params, ...patch };
+    setOverride(next);
+    writeQuery(new URLSearchParams({ p1: String(next.p1), p2: String(next.p2), prior: String(next.prior) }));
+  }
 
   const bf = p2 === 0 ? Infinity : p1 / p2;
   const posterior = Number.isFinite(bf) ? prior * bf : Infinity;
@@ -38,21 +40,21 @@ export function BayesLab() {
             <span>P(D | H_simulation)</span>
             <span className="font-mono text-brass">{p1.toFixed(2)}</span>
           </div>
-          <input type="range" min={0.01} max={1} step={0.01} value={p1} onChange={(e) => setP1(Number(e.target.value))} className="mt-2 w-full accent-[var(--brass)]" />
+          <input type="range" min={0.01} max={1} step={0.01} value={p1} onChange={(e) => update({ p1: Number(e.target.value) })} className="mt-2 w-full accent-[var(--brass)]" />
         </label>
         <label className="block">
           <div className="flex justify-between text-sm">
             <span>P(D | H_non)</span>
             <span className="font-mono text-brass">{p2.toFixed(2)}</span>
           </div>
-          <input type="range" min={0.01} max={1} step={0.01} value={p2} onChange={(e) => setP2(Number(e.target.value))} className="mt-2 w-full accent-[var(--brass)]" />
+          <input type="range" min={0.01} max={1} step={0.01} value={p2} onChange={(e) => update({ p2: Number(e.target.value) })} className="mt-2 w-full accent-[var(--brass)]" />
         </label>
         <label className="block">
           <div className="flex justify-between text-sm">
             <span>Prior P(H_S) / P(H_N)</span>
             <span className="font-mono text-brass">{prior.toFixed(2)}</span>
           </div>
-          <input type="range" min={0.1} max={10} step={0.1} value={prior} onChange={(e) => setPrior(Number(e.target.value))} className="mt-2 w-full accent-[var(--brass)]" />
+          <input type="range" min={0.1} max={10} step={0.1} value={prior} onChange={(e) => update({ prior: Number(e.target.value) })} className="mt-2 w-full accent-[var(--brass)]" />
         </label>
       </div>
       <div className="border border-line bg-bg-2 p-6">

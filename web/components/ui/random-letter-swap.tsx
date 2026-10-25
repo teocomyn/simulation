@@ -1,109 +1,62 @@
-"use client";
-
-import { useEffect, useId, useRef, useState } from "react";
-import { type AnimationOptions, motion, useAnimate } from "motion/react";
 import { cn } from "@/lib/utils";
 
 export type RandomLetterSwapProps = {
   label: string;
+  /** Les lettres sortent vers le bas (true) ou vers le haut (false). */
   reverse?: boolean;
+  /** Décalage entre deux lettres, en secondes. */
   staggerDuration?: number;
-  transition?: AnimationOptions;
   className?: string;
-  onClick?: () => void;
 };
 
-function shuffle(indices: number[]) {
-  const next = [...indices];
-  for (let i = next.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const current = next[i]!;
-    next[i] = next[j]!;
-    next[j] = current;
+/**
+ * Ordre de passage des lettres : pseudo-aléatoire mais déterministe,
+ * pour que le rendu serveur et le rendu client soient identiques.
+ */
+function swapRank(label: string) {
+  const order = Array.from(label, (_, i) => i);
+  let seed = 7;
+  for (const ch of label) seed = (Math.imul(seed, 31) + ch.charCodeAt(0)) >>> 0;
+  for (let i = order.length - 1; i > 0; i -= 1) {
+    seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+    const j = seed % (i + 1);
+    [order[i], order[j]] = [order[j]!, order[i]!];
   }
-  return next;
+  const rank: number[] = [];
+  order.forEach((charIndex, position) => {
+    rank[charIndex] = position;
+  });
+  return rank;
 }
 
-export function RandomLetterSwap({
-  label,
-  reverse = true,
-  staggerDuration = 0.02,
-  transition = { type: "spring", duration: 0.8 },
-  className,
-  onClick,
-}: RandomLetterSwapProps) {
-  const [scope, animate] = useAnimate();
-  const blocked = useRef(false);
-  const [ready, setReady] = useState(false);
-  const uid = useId().replace(/[^a-zA-Z0-9]/g, "");
+/**
+ * Effet de survol : chaque lettre glisse et est remplacée par sa copie.
+ * CSS pur (voir .rls dans globals.css), désactivé par prefers-reduced-motion.
+ */
+export function RandomLetterSwap({ label, reverse = true, staggerDuration = 0.02, className }: RandomLetterSwapProps) {
   const chars = Array.from(label);
-
-  useEffect(() => {
-    setReady(true);
-  }, []);
-
-  const run = (hovered: boolean) => {
-    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      return;
-    }
-    const order = shuffle(chars.map((_, i) => i));
-    for (let i = 0; i < order.length; i += 1) {
-      const index = order[i]!;
-      const delay = i * staggerDuration;
-      void animate(
-        `.rls-${uid}-a-${index}`,
-        { y: hovered ? (reverse ? "100%" : "-100%") : "0%" },
-        { ...transition, delay },
-      );
-      void animate(
-        `.rls-${uid}-b-${index}`,
-        { y: hovered ? "0%" : reverse ? "-100%" : "100%" },
-        { ...transition, delay },
-      );
-    }
-  };
-
-  if (!ready) {
-    return <span className={cn("relative inline-flex items-center", className)}>{label}</span>;
-  }
+  const rank = swapRank(label);
 
   return (
-    <motion.span
-      ref={scope}
-      className={cn("relative inline-flex items-center overflow-hidden", className)}
-      onHoverStart={() => {
-        if (blocked.current) return;
-        blocked.current = true;
-        run(true);
-      }}
-      onHoverEnd={() => {
-        run(false);
-        blocked.current = false;
-      }}
-      onClick={onClick}
-    >
+    <span className={cn("rls relative inline-flex items-center overflow-hidden", reverse ? "rls-down" : "rls-up", className)}>
       <span className="sr-only">{label}</span>
       <span aria-hidden="true" className="pointer-events-none inline-flex">
-        {chars.map((ch, i) => (
-          <span
-            key={`${label}-${i}`}
-            className="inline-block align-bottom leading-none"
-            style={{ position: "relative", overflow: "hidden", height: "1.05em" }}
-          >
-            <motion.span className={`rls-${uid}-a-${i} block`} initial={{ y: "0%" }}>
-              {ch === " " ? "\u00A0" : ch}
-            </motion.span>
-            <motion.span
-              className={`rls-${uid}-b-${i} block`}
-              style={{ position: "absolute", left: 0, top: 0 }}
-              initial={{ y: reverse ? "-100%" : "100%" }}
-            >
-              {ch === " " ? "\u00A0" : ch}
-            </motion.span>
-          </span>
-        ))}
+        {chars.map((ch, i) => {
+          const glyph = ch === " " ? " " : ch;
+          const style = { transitionDelay: `${(rank[i] ?? 0) * staggerDuration}s` };
+          return (
+            <span key={`${label}-${i}`} className="relative inline-block overflow-hidden align-bottom leading-none" style={{ height: "1.05em" }}>
+              <span className="rls-a block" style={style}>
+                {glyph}
+              </span>
+              <span className="rls-b absolute top-0 left-0 block" style={style}>
+                {glyph}
+              </span>
+            </span>
+          );
+        })}
       </span>
-    </motion.span>
+    </span>
   );
 }
 

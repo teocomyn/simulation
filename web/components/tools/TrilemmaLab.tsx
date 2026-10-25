@@ -1,7 +1,32 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { readQuery, writeQuery } from "@/lib/query-state";
+import { useMemo, useState } from "react";
+import { useLocationSearch, writeQuery } from "@/lib/query-state";
+
+/** Curseur N̄ par défaut : 27 simulations, soit κ ≈ 1 et f_sim ≈ 50 %, là où le résultat est le plus sensible. */
+const DEFAULT_N_SLIDE = 12;
+
+type Params = { fp: number; fi: number; n: number; p1: boolean };
+
+const DEFAULTS: Params = { fp: 0.2, fi: 0.2, n: DEFAULT_N_SLIDE, p1: true };
+
+function fromSearch(search: string): Params {
+  const q = new URLSearchParams(search);
+  const num = (key: string, fallback: number, min: number, max: number) => {
+    const value = Number(q.get(key));
+    return q.has(key) && Number.isFinite(value) ? Math.min(max, Math.max(min, value)) : fallback;
+  };
+  return {
+    fp: num("fp", DEFAULTS.fp, 0, 1),
+    fi: num("fi", DEFAULTS.fi, 0, 1),
+    n: num("n", DEFAULTS.n, 0, 100),
+    p1: q.has("p1") ? q.get("p1") !== "0" : DEFAULTS.p1,
+  };
+}
+
+function toSearch(p: Params) {
+  return new URLSearchParams({ fp: String(p.fp), fi: String(p.fi), n: String(p.n), p1: p.p1 ? "1" : "0" });
+}
 
 function logSlider(value: number, min: number, max: number) {
   const minL = Math.log10(min);
@@ -10,30 +35,16 @@ function logSlider(value: number, min: number, max: number) {
 }
 
 export function TrilemmaLab() {
-  const [fp, setFp] = useState(0.2);
-  const [fi, setFi] = useState(0.2);
-  const [nSlide, setNSlide] = useState(70);
-  const [p1, setP1] = useState(true);
-  const [ready, setReady] = useState(false);
+  const search = useLocationSearch();
+  const [override, setOverride] = useState<Params | null>(null);
+  const params = override ?? fromSearch(search);
+  const { fp, fi, n: nSlide, p1 } = params;
 
-  useEffect(() => {
-    const q = readQuery();
-    if (q.has("fp")) setFp(Number(q.get("fp")));
-    if (q.has("fi")) setFi(Number(q.get("fi")));
-    if (q.has("n")) setNSlide(Number(q.get("n")));
-    if (q.has("p1")) setP1(q.get("p1") !== "0");
-    setReady(true);
-  }, []);
-
-  useEffect(() => {
-    if (!ready) return;
-    const q = new URLSearchParams();
-    q.set("fp", String(fp));
-    q.set("fi", String(fi));
-    q.set("n", String(nSlide));
-    q.set("p1", p1 ? "1" : "0");
-    writeQuery(q);
-  }, [fp, fi, nSlide, p1, ready]);
+  function update(patch: Partial<Params>) {
+    const next = { ...params, ...patch };
+    setOverride(next);
+    writeQuery(toSearch(next));
+  }
 
   const N = logSlider(nSlide, 1, 1e12);
   const kappa = fp * fi * N;
@@ -61,7 +72,7 @@ export function TrilemmaLab() {
             max={1}
             step={0.001}
             value={fp}
-            onChange={(e) => setFp(Number(e.target.value))}
+            onChange={(e) => update({ fp: Number(e.target.value) })}
             className="mt-2 w-full accent-[var(--brass)]"
           />
         </label>
@@ -76,7 +87,7 @@ export function TrilemmaLab() {
             max={1}
             step={0.001}
             value={fi}
-            onChange={(e) => setFi(Number(e.target.value))}
+            onChange={(e) => update({ fi: Number(e.target.value) })}
             className="mt-2 w-full accent-[var(--brass)]"
           />
         </label>
@@ -90,7 +101,7 @@ export function TrilemmaLab() {
             min={0}
             max={100}
             value={nSlide}
-            onChange={(e) => setNSlide(Number(e.target.value))}
+            onChange={(e) => update({ n: Number(e.target.value) })}
             className="mt-2 w-full accent-[var(--brass)]"
           />
         </label>
@@ -98,7 +109,7 @@ export function TrilemmaLab() {
           <input
             type="checkbox"
             checked={p1}
-            onChange={(e) => setP1(e.target.checked)}
+            onChange={(e) => update({ p1: e.target.checked })}
             className="accent-[var(--brass)]"
           />
           P1 · substrat-indépendance de la conscience
@@ -106,12 +117,7 @@ export function TrilemmaLab() {
         <button
           type="button"
           className="text-sm text-brass underline underline-offset-4"
-          onClick={() => {
-            setFp(0.2);
-            setFi(0.2);
-            setNSlide(70);
-            setP1(true);
-          }}
+          onClick={() => update(DEFAULTS)}
         >
           Réinitialiser
         </button>

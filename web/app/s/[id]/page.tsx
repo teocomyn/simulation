@@ -2,8 +2,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
 import { StarLegend } from "@/components/StarLegend";
-import { adjacentSections, docsInSection, getSection, sections } from "@/lib/catalog";
+import { adjacentSections, docHref, docsInSection, getSection, sections } from "@/lib/catalog";
 import { breadcrumbJsonLd, collectionJsonLd } from "@/lib/schema";
+import { pageMeta } from "@/lib/seo";
 
 export function generateStaticParams() {
   return sections.map((s) => ({ id: s.id }));
@@ -13,11 +14,11 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const { id } = await params;
   const section = getSection(id);
   if (!section) return {};
-  return {
+  return pageMeta({
     title: `${section.number} ${section.title}`,
     description: section.blurb,
-    alternates: { canonical: `/s/${section.id}` },
-  };
+    path: `/s/${section.id}`,
+  });
 }
 
 export default async function SectionPage({ params }: { params: Promise<{ id: string }> }) {
@@ -52,7 +53,7 @@ export default async function SectionPage({ params }: { params: Promise<{ id: st
         {items.map((d, i) => (
           <Link
             key={d.slug}
-            href={`/d/${d.slug}`}
+            href={docHref(d.slug)}
             className="surface grid gap-2 p-5 md:grid-cols-[4rem_1fr]"
           >
             <span className="font-mono text-xs text-dim">{String(i + 1).padStart(2, "0")}</span>

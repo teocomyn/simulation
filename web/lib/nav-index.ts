@@ -1,4 +1,4 @@
-import { docs, getSection, sections } from "./catalog";
+import { docHref, docs, getSection, sections } from "./catalog";
 
 export type JumpItem = {
   href: string;
@@ -56,7 +56,7 @@ export const instruments = [
   {
     href: "/outils/fact-check",
     title: "51 affirmations",
-    body: "Dashboard du corpus fourni : 27 exactes, 12 à nuancer, 6 fausses, 6 non vérifiables.",
+    body: "Les affirmations du corpus de départ, vérifiées une à une : 27 exactes, 12 à nuancer, 6 fausses, 6 non vérifiables.",
   },
 ] as const;
 
@@ -72,10 +72,10 @@ export function adjacentInstruments(href: string) {
 const pages: JumpItem[] = [
   { href: "/", title: "Accueil", hint: "Couverture et parcours", group: "Page" },
   { href: "/synthese", title: "Synthèse", hint: "Position d'ensemble", group: "Page" },
-  { href: "/explorer", title: "Corpus", hint: "38 textes", group: "Page" },
+  { href: "/explorer", title: "Corpus", hint: `${docs.length} textes`, group: "Page" },
   { href: "/outils", title: "Instruments", hint: "Calculateurs et cartes", group: "Page" },
   { href: "/sources", title: "Sources", hint: "Bibliographie et fact-check", group: "Page" },
-  { href: "/recherche", title: "Recherche intégrale", hint: "Texte complet des 38 fichiers", group: "Page" },
+  { href: "/recherche", title: "Recherche intégrale", hint: `Texte complet des ${docs.length} documents`, group: "Page" },
   { href: "/methode", title: "Méthode", hint: "Règle 0 et colophon", group: "Page" },
   { href: "/glossaire", title: "Glossaire", hint: "Q, H, A, P", group: "Page" },
 ];
@@ -96,7 +96,7 @@ export function jumpIndex(): JumpItem[] {
       group: "Instrument" as const,
     })),
     ...docs.map((d) => ({
-      href: `/d/${d.slug}`,
+      href: docHref(d.slug),
       title: d.title,
       hint: `${getSection(d.section)?.title ?? d.section} · ${d.thesis}`,
       group: "Texte" as const,
