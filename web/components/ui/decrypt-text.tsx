@@ -300,7 +300,10 @@ function DecryptTextBase({
     </span>
   );
 
+  // Le style est rendu à côté de l'élément, pas dedans : un titre ne doit contenir que son texte.
   return (
+    <>
+    <style>{css}</style>
     <Tag
       ref={rootRef as React.Ref<never>}
       data-motion={reduce ? "static" : "animated"}
@@ -316,7 +319,6 @@ function DecryptTextBase({
       )}
       {...rest}
     >
-      <style>{css}</style>
       <span className="sr-only">{text}</span>
       {terminal ? (
         <span
@@ -345,6 +347,7 @@ function DecryptTextBase({
         <span className={cn(scope, "block")}>{glyphLayer}</span>
       )}
     </Tag>
+    </>
   );
 }
 
