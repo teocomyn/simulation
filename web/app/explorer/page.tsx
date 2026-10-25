@@ -1,4 +1,5 @@
 import { ExplorerBrowser } from "@/components/ExplorerBrowser";
+import { RecentUpdates } from "@/components/RecentUpdates";
 import { docs, sections } from "@/lib/catalog";
 
 import { pageMeta } from "@/lib/seo";
@@ -19,6 +20,9 @@ export default function ExplorerPage() {
       <p className="mt-4 max-w-2xl text-lg text-muted">
         Chaque page rend le markdown source. Rien n&apos;est résumé à la place des données.
       </p>
+      <div className="mt-8">
+        <RecentUpdates />
+      </div>
       <div className="mt-8">
         <ExplorerBrowser sections={sections} docs={docs} />
       </div>

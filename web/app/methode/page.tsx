@@ -1,7 +1,21 @@
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/schema";
+import { StatusBadge } from "@/components/StatusBadge";
+import { latestUpdate } from "@/lib/dates";
 import { DATE_PUBLISHED, formatDateFr, pageMeta } from "@/lib/seo";
+
+const STATUSES: { label: string; meaning: string }[] = [
+  { label: "[ÉTABLI]", meaning: "Publié, vérifié en source primaire, sans contestation sérieuse dans la littérature citée." },
+  { label: "[DÉBATTU]", meaning: "Publié, mais contesté par des travaux sérieux. Aucune position ne fait consensus." },
+  { label: "[SPÉCULATIF]", meaning: "Cohérent, parfois formalisé, sans appui empirique." },
+  { label: "[NON SCIENTIFIQUE]", meaning: "Sans prédiction réfutable ni protocole contrôlé." },
+  { label: "[TESTABLE]", meaning: "Produit une prédiction qu'une observation peut contredire." },
+  { label: "[PRÉDICTION PROBABLEMENT FAUSSE]", meaning: "Testable, mais les données disponibles vont contre la prédiction." },
+  { label: "[À VÉRIFIER]", meaning: "Calcul ou affirmation du dossier pas encore confronté à une source primaire." },
+  { label: "[PROBLÈME OUVERT]", meaning: "Question posée précisément, sans réponse connue." },
+  { label: "[PHILOSOPHIQUE]", meaning: "Question conceptuelle : analysable, pas tranchable par l'expérience." },
+];
 
 export const metadata = pageMeta({
   title: "Méthode",
@@ -63,13 +77,27 @@ export default function MethodePage() {
         </p>
         <h2>Statuts</h2>
         <p>
-          Les pastilles (établi, débattu, spéculatif, non scientifique) restent collées aux
-          assertions. Elles ne sont pas décoratives.
+          Chaque affirmation porte une pastille, collée au texte. Elle n&apos;est pas
+          décorative : elle dit ce que l&apos;affirmation vaut. Une pastille peut porter une
+          précision après une virgule, par exemple « établi en AdS/CFT et modèles-jouets ».
+          La précision fait partie du statut.
         </p>
-        <h2>Date</h2>
+        <dl className="not-prose mt-6 grid gap-4">
+          {STATUSES.map((s) => (
+            <div key={s.label} className="grid gap-1.5 sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] sm:gap-4">
+              <dt>
+                <StatusBadge>{s.label}</StatusBadge>
+              </dt>
+              <dd className="text-base leading-7 text-ink-2">{s.meaning}</dd>
+            </div>
+          ))}
+        </dl>
+        <h2>Dates</h2>
         <p>
-          Le tableau est arrêté au {formatDateFr()} : Wolpert (décembre 2025), COGITATE (avril
-          2025), l&apos;échange Vazza–Bostrom. Toute actualisation ultérieure devra être datée.
+          L&apos;état de l&apos;art est arrêté au {formatDateFr()} : Wolpert (décembre 2025),
+          COGITATE (avril 2025), l&apos;échange Vazza, Edge et Brown, Bostrom. Le corpus a été
+          modifié pour la dernière fois le {formatDateFr(latestUpdate())}. Chaque texte affiche
+          sa propre date de mise à jour, tirée de l&apos;historique des versions.
         </p>
       </div>
       <div className="mt-10 flex flex-wrap gap-3">
