@@ -1,4 +1,4 @@
-# Fact-check du corpus fourni
+# Fact-check du corpus de départ
 
 Verdict affirmation par affirmation sur les éléments vérifiables du corpus.
 Vérifications menées le 29 août 2026.

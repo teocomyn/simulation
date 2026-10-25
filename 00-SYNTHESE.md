@@ -1,19 +1,21 @@
 # Synthèse
 
-> **Mise à jour du 29 août 2026.** Trois développements postérieurs à la rédaction
+> **État de l'art arrêté au 29 août 2026.** Trois développements postérieurs à la rédaction
 > initiale changent le tableau :
 > **(1)** Wolpert (*J. Phys. Complexity*, décembre 2025) donne le premier cadre
-> mathématique du sujet et détruit la hiérarchie des niveaux ;
+> mathématiquement précis du sujet et montre qu'il n'y a pas nécessairement de niveau
+> supérieur et de niveau inférieur ;
 > **(2)** COGITATE (*Nature*, avril 2025) met en difficulté les deux principales théories
 > de la conscience — le verrou central s'élargit ;
 > **(3)** l'échange Vazza ↔ Edge & Brown ↔ Bostrom déplace le débat vers le coût de
-> simuler l'expérience elle-même, qui est **non calculable**.
+> simuler l'expérience elle-même, que **personne n'a jamais chiffré**, faute de savoir ce
+> que coûte une conscience.
 > Détail complet en [10-ACTUALISATION](10-ACTUALISATION/01-etat-de-l-art-2026.md),
-> traitement formel en [11-MATHEMATIQUES](11-MATHEMATIQUES/).
+> traitement formel en [11-MATHEMATIQUES](11-MATHEMATIQUES/), bilan au §9 ci-dessous.
 
 ## 1. Le geste central : séparer quatre questions
 
-Presque toute la discussion publique sur la simulation — y compris dans le corpus fourni —
+Presque toute la discussion publique sur la simulation — y compris dans le corpus de départ —
 traite comme une seule question ce qui en est quatre. Elles sont logiquement indépendantes
 et n'ont ni les mêmes conditions de vérification, ni les mêmes conséquences.
 
@@ -78,7 +80,7 @@ si elle existe.
 | Contraintes sur un réseau d'espace-temps (Beane, Davoudi, Savage 2012) | Une **borne inférieure** sur le pas de réseau, ≳ 10¹¹ GeV, et une signature possible : anisotropie du spectre des rayons cosmiques d'ultra-haute énergie | Aucune indication positive de simulation. C'est un test **d'une version très particulière** de l'hypothèse |
 | Principe holographique, bornes de Bekenstein | Que l'information est une grandeur physique fondamentale, liée à la géométrie et à la gravitation | Que l'univers soit *calculé* par quelque chose |
 | Complexité de simulation classique (Ringel & Kovrizhin 2017) | Que certains systèmes quantiques ne sont pas simulables efficacement sur un **calculateur classique** | Que l'univers ne soit pas une simulation. Cette lecture, très reprise dans la presse, est une **surinterprétation** — voir [02-PHYSIQUE/03](02-PHYSIQUE/03-arguments-contre.md) |
-| Échelle de Planck | Une échelle où la description actuelle cesse d'être valide | Que ce soit un « pixel ». Cette assimilation est fausse |
+| Échelle de Planck | Une échelle où la description actuelle cesse d'être valide | Que ce soit un « pixel ». Cette assimilation est fausse. Les données de sursauts gamma excluent les modèles discrets à effet linéaire au-delà de 10 fois l'énergie de Planck, mais le cas quadratique, celui d'un réseau, n'est contraint qu'à environ 7 × 10¹¹ GeV (LHAASO 2024) : voir [11-MATHEMATIQUES/03](11-MATHEMATIQUES/03-bornes-physiques-et-complexite.md) |
 
 **Le seul travail qui mérite le nom de test est celui de Beane et al.**, précisément
 parce qu'il commence par restreindre l'hypothèse à une forme assez précise pour produire
@@ -105,7 +107,7 @@ l'absence de théorie de l'expérience subjective.
 
 ## 5. Le cas Tom Campbell : traité avec précision
 
-Le corpus fourni accorde à Tom Campbell une place centrale. Il mérite un traitement
+Le corpus de départ accorde à Tom Campbell une place centrale. Il mérite un traitement
 en deux temps, parce que les deux moitiés n'ont pas le même statut.
 
 **Ce qui est à son crédit `[MÉTHODE VALIDE]`**
@@ -192,11 +194,64 @@ Correction proposée, en une règle :
 > métaphysique, pas comme hypothèse de travail.
 
 Cette règle élimine d'un coup 90 % de la littérature du domaine, y compris la plupart
-des arguments du corpus fourni. C'est le but.
+des arguments du corpus de départ. C'est le but.
 
 Version révisée du programme en [08-PROTOCOLE/](08-PROTOCOLE/).
 
-## 9. Position finale du dossier
+## 9. Ce que les sections 10 à 13 ont ajouté
+
+Les huit premières sections ont été rédigées avant le balayage de la littérature
+2025-2026. Les sections 10 à 13 l'intègrent, et six apports changent la lecture de
+ce qui précède.
+
+1. **La sous-détermination est un résultat formel, pas un manque de données.**
+   Presque tous les arguments du domaine ont un facteur de Bayes égal à 1 : ils sont
+   aussi probables si l'hypothèse est vraie que si elle est fausse. Un seul observable
+   de toute la littérature y échappe, l'anisotropie `ℓ = 4` des rayons cosmiques
+   d'ultra-haute énergie, et il est négatif. Le même résultat gouverne trois débats :
+   la simulation, la souffrance du tissu neuronal cultivé, la conscience des modèles de
+   langage. Voir [11-MATHEMATIQUES/04](11-MATHEMATIQUES/04-sous-determination.md).
+2. **Aucun prior ne fixe la probabilité.** Le seul prior principiel, celui de
+   Solomonoff et Levin, n'est défini qu'à une constante près, cette constante peut
+   dépasser l'écart à mesurer (Leike et Hutter 2015), et la complexité de Kolmogorov
+   est incalculable. Le problème de la classe de référence de Bostrom est le problème
+   de la mesure en cosmologie, celui des cerveaux de Boltzmann. Voir
+   [11-MATHEMATIQUES/07](11-MATHEMATIQUES/07-probabilite-algorithmique.md) et
+   [11-MATHEMATIQUES/01](11-MATHEMATIQUES/01-formalisme-anthropique.md).
+3. **La hiérarchie des niveaux n'est pas une nécessité.** Wolpert montre qu'aucune
+   dégradation n'est requise entre simulateur et simulé, que la simulation mutuelle
+   est possible et qu'un univers peut se simuler lui-même. Ce sont des possibilités
+   logiques, pas des indices empiriques. Voir
+   [11-MATHEMATIQUES/02](11-MATHEMATIQUES/02-computabilite-et-auto-simulation.md).
+4. **La physique n'a toujours aucun signal.** L'anomalie du moment magnétique du muon
+   a disparu en juin 2025, à environ 0,6 σ. Le cas d'un espace-temps en réseau reste
+   peu contraint, comme le montre la ligne « Échelle de Planck » du §3. Et les murs
+   d'indécidabilité ne tiennent qu'en précision exacte : l'indécidabilité du gap
+   spectral devient décidable sous une perturbation arbitrairement petite (juillet
+   2026), et `MIP* = RE` s'effondre sous bruit constant. Voir
+   [11-MATHEMATIQUES/03](11-MATHEMATIQUES/03-bornes-physiques-et-complexite.md),
+   [06](11-MATHEMATIQUES/06-preuves-interactives-et-nonlocalite.md) et
+   [09](11-MATHEMATIQUES/09-indecidabilite-physique.md).
+5. **Le verrou s'est resserré.** COGITATE met en difficulté les deux principales
+   théories de la conscience. Le calcul exact de Findlay et al. montre qu'un
+   simulateur de von Neumann n'a pas la structure Φ du système qu'il simule : si la
+   théorie de l'information intégrée est juste, la condition de
+   substrat-indépendance de Bostrom tombe. Mais cette théorie est elle-même en litige.
+   Voir [11-MATHEMATIQUES/11](11-MATHEMATIQUES/11-formalismes-de-la-conscience.md).
+6. **Le seul terrain expérimental du verrou est le tissu neuronal en boucle fermée.**
+   Ce qui est nouveau dans DishBrain et le CL1 n'est pas l'humanité du substrat, c'est
+   la boucle : le tissu reçoit des entrées, agit sur un environnement et un signal le
+   contraint. L'éthique actionnable y porte sur les ablations publiées et le
+   consentement documenté, pas sur une souffrance supposée. Voir
+   [12-BIOCOMPUTING/01](12-BIOCOMPUTING/01-dishbrain-cl1.md). Le fil de commentaires
+   public qui a suivi a lui-même corrigé plusieurs points du dossier : voir
+   [13-RECEPTION/01](13-RECEPTION/01-fil-de-commentaires.md).
+
+**Ce qui ne change pas :** l'objection probabiliste centrale, la reformulation
+ontologique, la Règle 0, et le constat que la physique n'apporte aucune indication
+positive en faveur de l'hypothèse.
+
+## 10. Position finale du dossier
 
 1. **Q1 (substrat informationnel) est une question scientifique sérieuse** et un
    programme de recherche actif. Elle mérite d'être suivie.

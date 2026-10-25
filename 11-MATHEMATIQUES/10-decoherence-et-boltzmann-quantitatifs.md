@@ -3,7 +3,7 @@
 > Deux dossiers que la vulgarisation traite qualitativement et qui sont, en réalité,
 > **quantitatifs à vingt ordres de grandeur près**. Partie I : l'observation sans
 > observateur, avec les taux vérifiés. Partie II : les fluctuations et le problème de la
-> mesure cosmologique — section où l'agent de vérification a échoué (limite de session) ;
+> mesure cosmologique — section qui n'a pas pu être confrontée aux sources primaires ;
 > les valeurs y sont dérivées par le dossier et marquées `[À VÉRIFIER]`.
 
 ---
@@ -177,7 +177,7 @@ n'en découle. `BF = 1`.
 
 # Partie II — Cerveaux de Boltzmann et mesure cosmologique
 
-> ⚠️ L'agent de vérification dédié à cette partie a échoué (limite de session).
+> ⚠️ Cette partie n'a pas été vérifiée en source primaire.
 > Les dérivations ci-dessous sont celles du dossier ; les références aux valeurs publiées
 > (Page 2008 en particulier) sont marquées `[À VÉRIFIER]`.
 

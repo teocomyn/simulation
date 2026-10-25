@@ -148,7 +148,7 @@ un appel à une physique de niveau supérieur inconnue — c'est la seule object
 | Gödel / irréductibilité | ★★☆☆☆ | La simulation n'a pas besoin d'être complète |
 | Coût computationnel | ★★☆☆☆ | Suppose que le substrat suit notre physique |
 | Ringel & Kovrizhin | ★☆☆☆☆ | Ne porte pas sur la question ; surinterprété |
-| Contraintes astrophysiques (Struzik) | ? | Trop récent, probablement §3 |
+| Contraintes astrophysiques (Vazza 2025) | ★★☆☆☆ | Même structure que le coût computationnel : vaut seulement si l'hôte a nos lois (§4) |
 
 **Bilan.** Aucun argument physique ne réfute l'hypothèse de simulation, et il est
 probable qu'aucun ne le puisse jamais, pour la raison exposée au §3.

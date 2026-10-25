@@ -38,7 +38,7 @@ pas produire d'information sur cette question, quelle que soit la quantité de d
 
 ## 2. Application 1 — le tissu neuronal en boucle fermée
 
-Le corpus fourni sur DishBrain / CL1 identifie exactement ce point, et c'est sa
+Le corpus de départ sur DishBrain / CL1 identifie exactement ce point, et c'est sa
 meilleure contribution :
 
 ```

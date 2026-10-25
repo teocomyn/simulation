@@ -113,7 +113,7 @@ Et si notre monde n'existait pas ?*, Les Arènes, 16 avril 2026.**
 ~400 pages. Huit ans de recherche. Auteur du *Syndrome de Palo Alto* (prix Zadig ×
 Technikart). Podcast : *Silicon Carne*, animé par Carlos Diaz.
 
-*(Le corpus fourni ne nomme pas l'auteur ; identification vérifiée le 29 août 2026.)*
+*(Le corpus de départ ne nomme pas l'auteur ; identification vérifiée le 29 août 2026.)*
 
 ### Ce qui en fait la valeur
 - **Un travail de terrain réel** : cinq semaines à San Francisco, accès obtenu à des

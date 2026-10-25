@@ -1,6 +1,6 @@
 # Fact-check des arguments populaires
 
-Douze arguments qui circulent, y compris dans le corpus fourni. Verdict par verdict.
+Douze arguments qui circulent, y compris dans le corpus de départ. Verdict par verdict.
 
 ---
 

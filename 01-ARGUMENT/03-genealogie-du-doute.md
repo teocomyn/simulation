@@ -2,7 +2,7 @@
 
 ## 1. La thèse : chaque époque emprunte sa métaphore à sa technologie dominante
 
-C'est l'intuition la plus forte du corpus fourni, et elle est historiquement solide.
+C'est l'intuition la plus forte du corpus de départ, et elle est historiquement solide.
 
 | Époque | Métaphore du réel | Technologie de référence |
 |---|---|---|

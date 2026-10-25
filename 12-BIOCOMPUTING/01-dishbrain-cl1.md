@@ -120,7 +120,7 @@ C'est un cas d'école de collision entre un vocabulaire technique et un vocabula
 
 ## 5. Le renversement : le substrat n'est pas le problème
 
-C'est l'apport le plus fort du corpus fourni, et il faut le conserver tel quel.
+C'est l'apport le plus fort du corpus de départ, et il faut le conserver tel quel.
 
 Rien dans le CL1 n'est plus « humain » qu'une culture cellulaire ordinaire. Des millions
 de cultures de cellules humaines existent depuis des décennies. Une cellule HeLa est

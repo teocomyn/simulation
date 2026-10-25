@@ -159,14 +159,14 @@ sources secondaires et références culturelles.
 
 ---
 
-## 9. Le corpus fourni
+## 9. Le corpus de départ
 
 **Livre**
 - **Loïc Hecht**, *La Simulation — Enquête sur la théorie qui fascine la Silicon Valley.
   Et si notre monde n'existait pas ?*, **Les Arènes**, 16 avril 2026. ~400 p.
 - Loïc Hecht, *Le Syndrome de Palo Alto*, roman (prix Zadig × Technikart).
 - Entretien : podcast **Silicon Carne**, animé par Carlos Diaz.
-  *(Le corpus fourni ne nommait pas l'auteur ; identifié le 29 août 2026.)*
+  *(Le corpus de départ ne nommait pas l'auteur ; identifié le 29 août 2026.)*
 
 **Sources primaires citées dans l'enquête**
 - Tad Friend, *Sam Altman's Manifest Destiny*, **The New Yorker**, numéro du
@@ -198,6 +198,6 @@ sources secondaires et références culturelles.
 - Une réponse publiée de Bostrom aux objections de classe de référence postérieures à 2015.
 - Une synthèse récente et évaluée sur la substrat-indépendance de la conscience.
 - Les résultats expérimentaux de Campbell, s'ils sont un jour publiés.
-- Les analyses de la communauté sur le commentaire de Struzik (2026).
+- Les analyses de la communauté sur le commentaire d'Edge et Brown (2026).
 - Une histoire critique du passage de l'argument philosophique de Bostrom à sa
   réception dans l'industrie technologique.

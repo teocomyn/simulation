@@ -90,7 +90,7 @@ nommément** — « passent à côté ».
 
 ### 2.4 Ce que cela change pour le dossier
 
-**C'est une correction importante de mon traitement.** Le dossier classait l'argument
+**C'est une correction importante du traitement initial du dossier.** Le dossier classait l'argument
 du « calcul paresseux » (A7) comme « cohérent en informatique, sans support empirique ».
 Il faut nuancer : cet argument est désormais **au cœur d'un échange publié**, et c'est
 la ligne de défense officielle de Bostrom.
@@ -311,7 +311,7 @@ Honnêteté sur les limites, pour que le dossier ne soit pas surestimé.
 | Réponse de la communauté aux résultats COGITATE | Partiellement couverte |
 
 **La lacune la plus gênante est la première.** L'objection de classe de référence est
-la colonne vertébrale du dossier, et je n'ai pas vérifié si la littérature 2024-2026
+la colonne vertébrale du dossier, et ce balayage n'a pas vérifié si la littérature 2024-2026
 l'a fait avancer. À traiter en priorité.
 
 ---
@@ -360,6 +360,6 @@ supraconducteurs (Sci. Adv. 2025) ; **aucune preuve publiée de NP-dureté de Φ
 **aucune recherche dédiée du motif cubique K₄** dans les données Auger/TA ; CURBy (Nature,
 juin 2025), premier service public d'aléa certifié par Bell.
 
-**Échec :** l'agent « cerveaux de Boltzmann / mesure cosmologique » a atteint la limite de
-session. La partie II du fichier [10](../11-MATHEMATIQUES/10-decoherence-et-boltzmann-quantitatifs.md)
+**Non couvert :** le domaine « cerveaux de Boltzmann / mesure cosmologique » n'a pas pu être
+vérifié en source primaire. La partie II du fichier [10](../11-MATHEMATIQUES/10-decoherence-et-boltzmann-quantitatifs.md)
 est dérivée par le dossier et marquée `[À VÉRIFIER]`.

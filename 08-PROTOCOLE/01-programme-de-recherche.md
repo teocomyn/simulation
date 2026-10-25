@@ -35,7 +35,7 @@ une encyclopédie du plausible.
 > Elle est archivée comme position métaphysique, avec ce label.
 
 Cette règle élimine d'un coup la quasi-totalité de la littérature du domaine —
-y compris la plupart des arguments du corpus fourni. **C'est le but.**
+y compris la plupart des arguments du corpus de départ. **C'est le but.**
 
 Ce qui survit à la Règle 0, aujourd'hui : essentiellement Beane, Davoudi & Savage (2012),
 et le protocole de Campbell (dont la prédiction est probablement fausse, mais qui est

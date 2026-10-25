@@ -3,10 +3,14 @@
 Dossier de référence sur **l'hypothèse de simulation** et, plus largement, sur la question
 du niveau fondamental de la réalité.
 
-Constitué le 29 août 2026. Intègre et vérifie le corpus fourni : analyse de la vidéo
-« La fin de l'univers », discussion sur les niveaux d'ontologie, question de l'univers
-sans souffrance, argument du calcul paresseux, projet SIMULATION PROTOCOL, interview
-de Loïc Hecht sur Silicon Carne, et l'objection probabiliste finale.
+Constitué le 29 août 2026. Le dossier part d'un **corpus de départ**, l'ensemble des
+documents et échanges qui ont lancé le travail : analyse de la vidéo « La fin de
+l'univers », discussion sur les niveaux d'ontologie, question de l'univers sans
+souffrance, argument du calcul paresseux, projet SIMULATION PROTOCOL, interview de
+Loïc Hecht sur Silicon Carne, objection probabiliste finale, fact-check de la vidéo sur
+le biocomputing et fil de commentaires qui l'a suivie. Chaque fois que les textes
+parlent du « corpus de départ », c'est de cet ensemble qu'il s'agit : le dossier
+l'intègre, le vérifie affirmation par affirmation et le corrige.
 
 ---
 
@@ -28,13 +32,18 @@ Formulation retenue dans tout le dossier :
 
 ## Site
 
-Le corpus entier est lisible dans `web/` :
+En ligne : **https://simulation42.vercel.app**. Le site rend le corpus tel quel, sans
+résumé substitué : 38 textes, 14 sections, recherche plein texte, et 10 instruments
+(trilemme, H1–H8, BF = 1, décohérence, 51 fact-checks, Règle 0…).
+
+En local :
 
 ```bash
 cd web && npm install && npm run dev
 ```
 
-Accueil, 38 textes, 14 sections, recherche, et 10 instruments (trilemme, H1–H8, BF = 1, décohérence, 51 fact-checks, Règle 0…).
+Chaque modification d'un texte se publie en poussant sur `main`. Avant de commiter un
+texte modifié, lancez `npm run dates` dans `web/` pour mettre à jour sa date affichée.
 
 ---
 
@@ -52,6 +61,10 @@ Accueil, 38 textes, 14 sections, recherche, et 10 instruments (trilemme, H1–H8
 | Pourquoi ce milieu, pourquoi maintenant | [07-SOCIOLOGIE/](07-SOCIOLOGIE/) |
 | Comment en faire de la recherche | [08-PROTOCOLE/](08-PROTOCOLE/) |
 | Sources et fact-check du corpus | [09-SOURCES/](09-SOURCES/) |
+| Ce que la recherche 2025-2026 a changé | [10-ACTUALISATION/](10-ACTUALISATION/01-etat-de-l-art-2026.md) |
+| Les résultats formels, équation par équation | [11-MATHEMATIQUES/](11-MATHEMATIQUES/), en commençant par [l'échelle de profondeur](11-MATHEMATIQUES/12-les-equations-les-plus-profondes.md) |
+| Le seul terrain expérimental du verrou | [12-BIOCOMPUTING/](12-BIOCOMPUTING/) |
+| Ce que le public a corrigé | [13-RECEPTION/](13-RECEPTION/01-fil-de-commentaires.md) |
 
 ## Arborescence
 
@@ -121,8 +134,13 @@ est possible, et qu'un univers peut se simuler lui-même. L'objection la plus r�
 
 ## Règles appliquées dans tout le dossier
 
-1. **Séparer science, philosophie et spéculation.** Chaque affirmation porte un statut :
-   `[ÉTABLI]`, `[DÉBATTU]`, `[SPÉCULATIF]`, `[NON SCIENTIFIQUE]`.
+1. **Séparer science, philosophie et spéculation.** Chaque affirmation porte un statut.
+   Les quatre familles de base sont `[ÉTABLI]`, `[DÉBATTU]`, `[SPÉCULATIF]` et
+   `[NON SCIENTIFIQUE]`. S'y ajoutent des statuts de méthode ou de travail :
+   `[TESTABLE]`, `[À VÉRIFIER]`, `[DÉRIVÉ]`, `[MÉTHODE VALIDE]`, `[PROBLÈME OUVERT]`,
+   `[PHILOSOPHIQUE]`, `[PRÉDICTION PROBABLEMENT FAUSSE]`. Un statut peut porter une
+   précision après une virgule, par exemple `[ÉTABLI en AdS/CFT et modèles-jouets]` :
+   la précision fait partie du statut et ne doit pas être retirée.
 2. **Nommer les inférences invalides.** Une grande partie du domaine repose sur des
    glissements logiques répétés. Ils sont listés et nommés en
    [02-PHYSIQUE/04](02-PHYSIQUE/04-fact-check-arguments-populaires.md).

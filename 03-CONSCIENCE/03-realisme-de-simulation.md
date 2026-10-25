@@ -1,7 +1,7 @@
 # Le réalisme de simulation
 
 > C'est le déplacement conceptuel le plus utile du domaine, et il manque entièrement
-> au corpus fourni. Il change ce que la question veut dire.
+> au corpus de départ. Il change ce que la question veut dire.
 
 ## 1. La thèse de Chalmers
 
@@ -36,7 +36,7 @@ pas une thèse **épistémologique sur la tromperie**.
 
 ## 3. L'argument structural
 
-La forme de l'argument, qui est aussi celle du corpus fourni :
+La forme de l'argument, qui est aussi celle du corpus de départ :
 
 ```
 Une molécule est réelle,      bien qu'elle soit faite d'atomes.
