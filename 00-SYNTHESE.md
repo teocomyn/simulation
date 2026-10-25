@@ -67,8 +67,15 @@ Trois précisions qui renforcent l'objection sans la déformer :
    probablement dedans ». Sans elle, la proportion de simulés dans une population ne dit
    rien sur *de quel côté* on se trouve.
 
+**Ce que la littérature récente y change.** L'objection a reçu en 2024-2026 sa première
+réplique directe : Thomas (*Erkenntnis*, 2026) reformule l'argument pour qu'il n'exige
+plus de connaître la proportion de simulés. Le poids repose alors entièrement sur le
+principe d'indifférence, que d'autres travaux jugent sans légitimité a priori (Adlam,
+*BJPS*, 2024). Voir [10-ACTUALISATION](10-ACTUALISATION/01-etat-de-l-art-2026.md) §12.
+
 **Verdict.** L'argument de Bostrom est valide et intéressant comme structure conditionnelle.
-Il n'établit aucune probabilité inconditionnelle. Le chiffre de Musk — « une chance sur
+Il n'établit aucune probabilité inconditionnelle sans un principe d'indifférence que la
+littérature ne tient pas pour acquis. Le chiffre de Musk — « une chance sur
 des milliards d'être dans la réalité de base » — n'a aucun contenu quantitatif :
 il résulte d'un dénombrement de consoles de jeu appliqué à une population dont on ignore
 si elle existe.

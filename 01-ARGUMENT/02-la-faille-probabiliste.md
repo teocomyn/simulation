@@ -107,6 +107,21 @@ savons énormément de choses sur notre univers, ses lois, son histoire. Traiter
 informations comme non distinctives est un choix, pas une neutralité. Et c'est un choix
 que rien ne justifie.
 
+### 4.4 La réplique publiée, et où l'objection doit désormais porter
+Teruji Thomas (*Simulation Expectation*, Erkenntnis 91, 427-444, 2026) a publié la
+réponse la plus directe à cette objection. Son argument n'exige plus une proportion
+élevée de simulés : il lui suffit que la proportion *espérée* soit élevée pour qui se
+suppose non simulé, dans une classe de référence adéquate. Contre cette version, dire
+que la proportion est inconnue ne suffit plus.
+
+Restent les deux appuis que Thomas conserve, et ce sont exactement les objections 4.2 et
+4.3 : un principe d'indifférence auto-localisante, qu'Emily Adlam (*Against
+Self-Location*, British Journal for the Philosophy of Science, 2024) juge dépourvu de
+légitimité a priori, et une classe de référence qui absorbe toute notre information
+indexicale. **L'objection tient, mais son centre de gravité se déplace** : de
+l'ignorance des paramètres vers le principe d'indifférence lui-même. `[DÉBATTU]` Détail
+en [10-ACTUALISATION](../10-ACTUALISATION/01-etat-de-l-art-2026.md) §12.
+
 ## 5. La structure logique du problème, en une ligne
 
 ```

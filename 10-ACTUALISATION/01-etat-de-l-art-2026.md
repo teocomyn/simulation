@@ -303,7 +303,7 @@ Honnêteté sur les limites, pour que le dossier ne soit pas surestimé.
 
 | Zone | État |
 |---|---|
-| Littérature philosophique 2025-2026 sur SSA/SIA et classes de référence | **Non balayée systématiquement.** C'est le point le plus important du dossier et sa littérature récente n'a pas été passée en revue |
+| Littérature philosophique 2025-2026 sur SSA/SIA et classes de référence | **Balayée le 25 octobre 2026**, voir §12. C'était le point le plus important du dossier |
 | Actes de conférences 2026 (quantum foundations, FQXi, conscience) | Non couverts |
 | Publications non anglophones | Non couvertes |
 | Préprints des trois derniers mois non indexés | Probablement manquants |
@@ -314,7 +314,7 @@ Honnêteté sur les limites, pour que le dossier ne soit pas surestimé.
 
 **La lacune la plus gênante est la première.** L'objection de classe de référence est
 la colonne vertébrale du dossier, et ce balayage n'a pas vérifié si la littérature 2024-2026
-l'a fait avancer. À traiter en priorité.
+l'a fait avancer. **Traitée le 25 octobre 2026 : voir §12.**
 
 ---
 
@@ -330,7 +330,7 @@ l'a fait avancer. À traiter en priorité.
 | **Vasileiou 2015** | Chiffre dur contre « Planck = pixel » |
 | **Espace-temps émergent 2026** | Confirme que H6 est le seul programme qui avance |
 | **QGEM** | Premier test réaliste de la nature quantique du substrat |
-| **Bostrom FAQ v2.0** | À lire en primaire — non obtenue en texte, voir §9 |
+| **Bostrom FAQ v2.0** | Lue en texte intégral le 25 octobre 2026 : aucune réponse nouvelle sur la classe de référence, voir §12 |
 
 **Ce qui n'est pas modifié :** l'objection probabiliste centrale, la reformulation
 ontologique, la Règle 0, et le constat que la physique n'apporte aucune indication
@@ -367,3 +367,110 @@ cosmologique ». Il a été vérifié ensuite, le 25 octobre 2026, contre Page (
 Bousso et Freivogel (2007) et Boddy, Carroll et Pollack (2016). Trois corrections en ont
 résulté, détaillées dans la partie II du fichier
 [10](../11-MATHEMATIQUES/10-decoherence-et-boltzmann-quantitatifs.md).
+
+---
+
+## 12. Addendum — la classe de référence dans la littérature 2024-2026 (balayage du 25 octobre 2026)
+
+Ce balayage comble la lacune signalée au §9. Il couvre les travaux publiés ou déposés
+entre janvier 2024 et octobre 2026 sur la SSA, la SIA, la classe de référence et
+l'argument de simulation, ainsi que la FAQ v2.0 de Bostrom, lue en texte intégral.
+Chaque référence retenue a été ouverte en source primaire ou contrôlée par les
+métadonnées de l'éditeur. Bilan en une phrase : **l'objection du dossier tient, mais elle
+a désormais une réplique publiée, et elle doit se déplacer vers le principe
+d'indifférence.**
+
+### 12.1 La FAQ de Bostrom, version 2.0 (2025)
+
+- **Aucune réponse nouvelle à l'objection de classe de référence.** Bostrom renvoie à
+  *Anthropic Bias* (2002) et au principe d'indifférence de l'article de 2003.
+- **Deux concessions qui vont dans le sens du dossier.** Dans un monde infini, la
+  proportion de simulés n'est pas définie : il faut une mesure de densité, et Bostrom en
+  choisit une, une hypersphère en expansion centrée là où, au niveau le plus bas de la
+  réalité, tourne l'ordinateur qui exécute notre simulation. C'est exactement un
+  régulateur au sens de [11-MATHEMATIQUES/01](../11-MATHEMATIQUES/01-formalisme-anthropique.md)
+  §5, choisi parmi d'autres possibles. Il reconnaît aussi qu'il est moins clair qu'un
+  principe d'indifférence s'applique à une classe d'observateurs très différents les uns
+  des autres.
+- **Sur Vazza (2025)**, il répond que l'argument n'exige pas de simuler tout l'univers,
+  seulement ce que perçoivent les observateurs, et que les critiques par le coût passent
+  à côté. C'est la ligne déjà analysée au §2.
+
+### 12.2 La réplique la plus directe à l'objection du dossier
+
+**Teruji Thomas, *Simulation Expectation*, Erkenntnis 91, 427-444 (2026 ; en ligne en
+décembre 2024).** Thomas présente un nouvel argument selon lequel nous sommes bien plus
+probablement simulés que non, construit pour surmonter des objections faites à
+l'argument classique. Il remplace la prémisse d'un rapport élevé de simulés, qui n'a pas
+d'appui empirique, par une prémisse plus faible : il suffit que le rapport *espéré*,
+pour qui se suppose non simulé, soit élevé dans une classe de référence adéquate. Une
+faible probabilité que nos descendants lancent un nombre énorme de simulations suffit
+alors. `[DÉBATTU]`
+
+**Ce que cela change.** C'est une vraie réponse et le dossier doit l'intégrer. Contre
+cette version, l'argument « `f_I` est inaccessible » perd de sa force. L'objection doit se
+reporter sur les deux appuis que Thomas conserve : un principe d'indifférence
+auto-localisante, et une classe de référence qui absorbe toute notre information
+pertinente, ce qui est l'objection du §4.3 de
+[la faille probabiliste](../01-ARGUMENT/02-la-faille-probabiliste.md).
+
+### 12.3 Le renfort le plus fort
+
+**Emily Adlam, *Against Self-Location*, British Journal for the Philosophy of Science
+(en ligne le 28 août 2024 ; arXiv:2409.05259).** Selon Adlam, il n'existe aucune manière
+rationnellement contraignante d'assigner des crédences purement auto-localisantes, et
+le principe d'indifférence n'est pas un principe a priori de rationalité. Elle en tire
+que certains raisonnements sur l'hypothèse de simulation et sur les cerveaux de
+Boltzmann sont fragilisés. `[DÉBATTU]`
+
+**Ce que cela change.** L'objection du dossier se radicalise : le problème n'est pas
+seulement le choix de la classe, c'est le principe d'indifférence lui-même. En face, ce
+principe a ses défenseurs : Builes (*Center indifference and skepticism*, Noûs 58(3),
+778-798, 2024) en défend une version précisée, et montre que son application dépend des
+croyances métaphysiques d'arrière-plan. **Le débat est ouvert dans la littérature : le
+dossier y défend une position, pas un consensus.**
+
+### 12.4 La symétrie avec Boltzmann, désormais discutée des deux côtés
+
+- **Peter Godfrey-Smith, *Simulation scenarios and philosophy*, Philosophy and
+  Phenomenological Research 109(3), 1036-1041 (2024)**, défend la parité : si l'hypothèse
+  des cerveaux de Boltzmann est cognitivement instable, l'hypothèse de simulation l'est
+  aussi.
+- **David J. Chalmers, *Taking the simulation hypothesis seriously*, même numéro,
+  1058-1067**, la refuse : sous le réalisme de simulation, se croire simulé ne conduit pas
+  à rejeter ses perceptions ni sa science, contrairement à se croire cerveau de
+  Boltzmann. C'est **la seule justification publiée** de l'asymétrie de traitement que le
+  dossier dénonce ; elle porte sur la stabilité cognitive, pas sur la mesure.
+- **Adam Elga, *Boltzmann brains and cognitive instability*, Philosophy and
+  Phenomenological Research 111(1), 127-136 (2025)**, conteste que cette instabilité soit
+  réelle : un modèle bayésien simple suggère qu'elle est illusoire. Si Elga a raison, la
+  justification de Chalmers perd son appui. `[DÉBATTU]`
+
+### 12.5 Le côté cosmologique confirme le diagnostic
+
+**Feraz Azhar, Alan H. Guth, Mohammad Hossein Namjoo, *Probabilistic inference in very
+large universes*, Phys. Rev. D 113, 123518 (2026).** Les auteurs posent explicitement
+un principe d'indifférence auto-localisante pour tester les théories cosmologiques, et
+mettent de côté le problème de la mesure. Ils écrivent que, dans les multivers infinis,
+la domination des cerveaux de Boltzmann dépend souvent de la mesure choisie pour
+régulariser les infinis, et qu'aucun moyen logiquement solide n'exclut qu'une théorie
+dominée par ces cerveaux soit correcte. Ils la rejettent parce qu'elle rendrait la science
+inutile, non parce qu'elle serait fausse. `[ÉTABLI]` Deux thèses du dossier reçoivent ainsi un
+appui évalué par les pairs : la réponse dépend du régulateur, et le rejet est
+pragmatique.
+
+### 12.6 Bilan pour le dossier
+
+| Point | Effet |
+|---|---|
+| FAQ v2.0 de Bostrom | Lue : aucune réponse nouvelle sur la classe de référence ; elle choisit elle-même un régulateur |
+| Thomas 2026 | Réplique directe : l'objection doit porter sur l'indifférence et sur l'information indexicale, plus sur `f_I` seul |
+| Adlam 2024 | Renfort : l'indifférence auto-localisante n'a pas de légitimité a priori |
+| Godfrey-Smith, Chalmers, Elga | L'asymétrie Bostrom/Boltzmann a une justification publiée, elle-même contestée |
+| Azhar, Guth, Namjoo 2026 | Appui cosmologique : dépendance au régulateur, rejet pragmatique |
+
+**Non couvert :** les livres et chapitres, les actes de conférence, la littérature non
+anglophone au-delà de Franceschi (*Philosophiques* 43(2), 2016), et plusieurs pages
+d'éditeurs protégées contre les robots. Repérés mais non vérifiés ici : Pittard
+(*Philosophical Review*, 2026), Dogramaci et Schoenfield (*Philosophical Review*, 2025),
+Lewis et Fallis (*Synthese* 202, 2023).

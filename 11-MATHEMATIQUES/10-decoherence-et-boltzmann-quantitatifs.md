@@ -256,7 +256,9 @@ Dasgupta, Dotan et Weslake (dir.), *Current Controversies in Philosophy of Scien
 Routledge, 2020) : un modèle
 prédisant la domination des BB est **cognitivement instable** — il rend improbable que
 les raisonnements ayant conduit à l'adopter soient fiables — donc à rejeter pour cette
-raison, pas parce qu'il serait réfuté.
+raison, pas parce qu'il serait réfuté. Elga (*Boltzmann brains and cognitive
+instability*, Phil. Phenomenol. Res. 111(1), 2025) conteste que cette instabilité soit
+réelle `[DÉBATTU]`.
 
 ## 10. Le problème de la mesure = le problème de la classe de référence
 
@@ -285,7 +287,9 @@ Le problème de la classe de référence ([01](01-formalisme-anthropique.md) §3
 problème de la mesure cosmologique sont **le même objet mathématique**. En cosmologie,
 une mesure prédisant la domination des BB est rejetée comme **pathologique** ; en
 philosophie, la mesure prédisant la domination des simulés est acceptée comme
-**résultat**. Cette asymétrie n'est justifiée par rien.
+**résultat**. La seule justification publiée de cette asymétrie, celle de Chalmers (2024),
+porte sur la stabilité cognitive, pas sur la mesure, et elle est contestée : voir
+[01](01-formalisme-anthropique.md) §5.
 
 ## 11. La dissolution algorithmique
 Müller (2020, 2026 — [07](07-probabilite-algorithmique.md) §5) : la probabilité d'être

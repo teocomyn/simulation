@@ -132,7 +132,9 @@ l'hypothèse ne suppose pas.
 **Forme.** Accepter un raisonnement dans un cas, le rejeter dans un autre de structure identique.
 **Cas.** Le plus important du dossier : le raisonnement de Bostrom et celui des cerveaux
 de Boltzmann ont **la même structure**. Le second est traité comme une réduction à
-l'absurde disqualifiant un modèle. Le premier comme un résultat.
+l'absurde disqualifiant un modèle. Le premier comme un résultat. Une justification de
+cette différence a été proposée (Chalmers 2024) ; elle est discutée en
+[11-MATHEMATIQUES/01](../11-MATHEMATIQUES/01-formalisme-anthropique.md) §5.
 **Test.** *Si j'applique ce raisonnement à un autre cas, en accepterais-je la conclusion ?*
 
 ---

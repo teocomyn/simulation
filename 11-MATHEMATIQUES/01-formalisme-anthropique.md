@@ -193,7 +193,19 @@ de la cosmologie, ouvert depuis vingt ans.
 
 **Le problème de la classe de référence de Bostrom est exactement ce problème,
 sous un autre nom.** L'un est traité comme une pathologie disqualifiante, l'autre
-comme un résultat. Cette asymétrie de traitement n'est justifiée par rien.
+comme un résultat.
+
+**Une justification de cette asymétrie a été publiée, et elle est contestée.** Chalmers
+(*Taking the simulation hypothesis seriously*, Phil. Phenomenol. Res. 109(3), 2024)
+soutient que, sous le réalisme de simulation, se croire simulé ne mine pas la science
+qui y conduit, alors que se croire cerveau de Boltzmann la mine. Godfrey-Smith (même
+numéro) défend au contraire la parité, et Elga (Phil. Phenomenol. Res. 111(1), 2025)
+conteste que l'instabilité cognitive soit réelle. Surtout, l'argument de Chalmers porte
+sur la stabilité cognitive des conclusions, pas sur la mesure : il laisse intact le fait
+que les deux raisonnements exigent le même régulateur arbitraire. Côté cosmologie, Azhar,
+Guth et Namjoo (Phys. Rev. D 113, 2026) confirment que la domination des cerveaux de
+Boltzmann dépend de la mesure choisie. Détail en
+[10-ACTUALISATION](../10-ACTUALISATION/01-etat-de-l-art-2026.md) §12. `[DÉBATTU]`
 
 ## 6. Ce que l'objection ne fait pas
 

@@ -46,7 +46,8 @@ le même argument que celui de Bostrom** (voir
 
 La conclusion de Boltzmann est universellement traitée comme une réduction à l'absurde
 disqualifiant le modèle. Celle de Bostrom est traitée comme un résultat.
-C'est une asymétrie de traitement qui ne se justifie pas.
+C'est une asymétrie de traitement. Sa seule justification publiée, celle de Chalmers
+(2024), est contestée : voir [11-MATHEMATIQUES/01](../11-MATHEMATIQUES/01-formalisme-anthropique.md) §5.
 
 ### 3.2 Sur la limite thermodynamique à la pensée
 Le document a raison d'en faire « le point le plus profond du sujet ». À ajouter :

@@ -17,11 +17,38 @@ sources secondaires et références culturelles.
   https://consc.net/papers/virtual.pdf
 
 **Critiques**
-- Mordechai Tokayer, *Bostrom's Simulation Argument is a Non-Sequitur*, PhilArchive. —
+- Mordechai Tokayer, *Bostrom's Simulation Argument is a Non-Sequitur*, PhilArchive,
+  manuscrit non daté. —
   https://philarchive.org/archive/TOKTSA
   *Développe l'objection de la classe de référence : l'hypothèse d'échantillonnage
   aléatoire n'est jamais énoncée ni défendue, seulement présupposée.*
+- Paul Franceschi, *L'argument de la Simulation et le problème de la classe de référence :
+  le point de vue du contextualisme dialectique*, **Philosophiques** 43(2), p. 371-389,
+  2016, DOI 10.7202/1038211ar.
+  *Le choix de la classe de référence produit des conclusions de niveaux différents.*
 - Recueil : https://philarchive.org/s/simulation%20argument
+
+**La classe de référence, 2024-2026** *(balayage du 25 octobre 2026, détail en
+[10-ACTUALISATION](../10-ACTUALISATION/01-etat-de-l-art-2026.md) §12)*
+- **Teruji Thomas**, *Simulation Expectation*, **Erkenntnis** 91, p. 427-444, 2026,
+  DOI 10.1007/s10670-024-00901-9.
+  *La réplique la plus directe à l'objection du dossier.*
+- **Emily Adlam**, *Against Self-Location*, **British Journal for the Philosophy of
+  Science**, en ligne le 28 août 2024, DOI 10.1086/732908 ; arXiv:2409.05259.
+- **David Builes**, *Center indifference and skepticism*, **Noûs** 58(3), p. 778-798, 2024,
+  DOI 10.1111/nous.12478.
+- **Peter Godfrey-Smith**, *Simulation scenarios and philosophy*, **Philosophy and
+  Phenomenological Research** 109(3), p. 1036-1041, 2024, DOI 10.1111/phpr.13124.
+- **David J. Chalmers**, *Taking the simulation hypothesis seriously*, **Philosophy and
+  Phenomenological Research** 109(3), p. 1058-1067, 2024, DOI 10.1111/phpr.13122.
+- **Adam Elga**, *Boltzmann brains and cognitive instability*, **Philosophy and
+  Phenomenological Research** 111(1), p. 127-136, 2025, DOI 10.1111/phpr.70014.
+- **Feraz Azhar, Alan H. Guth, Mohammad Hossein Namjoo**, *Probabilistic inference in very
+  large universes*, **Physical Review D** 113, 123518, 2026, DOI 10.1103/n3lg-b1x6 ;
+  arXiv:2602.02667.
+- Peter J. Lewis, Don Fallis, *Simulation and self-location*, **Synthese** 202, article 180,
+  2023, DOI 10.1007/s11229-023-04413-x.
+  *Repéré, non lu ici.*
 
 ---
 
@@ -64,7 +91,8 @@ sources secondaires et références culturelles.
 - **Eliott Edge, Chad Ashton Brown**, commentaire, *Frontiers in Physics*, 21 avril 2026. —
   https://www.frontiersin.org/journals/physics/articles/10.3389/fphy.2026.1808725/full
 - **Nick Bostrom**, *The Simulation Argument FAQ v2.0*, 2025, 19 questions. —
-  https://simulation-argument.com/faq/faq.pdf  *(répond nommément à Vazza)*
+  https://simulation-argument.com/faq/faq.pdf  *(répond nommément à Vazza ; lue en texte
+  intégral le 25 octobre 2026 : aucune réponse nouvelle sur la classe de référence)*
 
 **Le cadre formel — développement majeur**
 - **David H. Wolpert**, *What computer science has to say about the simulation hypothesis*,
@@ -75,7 +103,8 @@ sources secondaires et références culturelles.
   *Premier cadre mathématiquement précis. Kleene, Rice, Church-Turing physique.*
 
 **Philosophie récente**
-- **Keith R. Harris**, *The simulation argument reconsidered*, **Analysis**, janvier 2024.
+- **Keith R. Harris**, *The simulation argument reconsidered*, **Analysis** 84(1),
+  p. 23-31, 2024, DOI 10.1093/analys/anad048.
   *Les civilisations éviteraient rationnellement les simulations par risque de terminaison
   ⇒ le deuxième disjoint serait vrai.*
 - **Nick Bostrom**, *AI Creation and the Cosmic Host*, 2024.
@@ -470,7 +499,10 @@ plus haut ne sont pas répétées.
 
 ## 12. Ce qui manque et qu'il faudrait lire
 
-- Une réponse publiée de Bostrom aux objections de classe de référence postérieures à 2015.
+- ~~Une réponse publiée de Bostrom aux objections de classe de référence postérieures à
+  2015.~~ Vérifié le 25 octobre 2026 : la FAQ v2.0 n'en contient pas.
+- Le texte intégral de Pittard (*Philosophical Review*, 2026) et de Dogramaci et
+  Schoenfield (*Philosophical Review*, 2025), repérés mais non lus.
 - Une synthèse récente et évaluée sur la substrat-indépendance de la conscience.
 - Les résultats expérimentaux de Campbell, s'ils sont un jour publiés.
 - Les analyses de la communauté sur le commentaire d'Edge et Brown (2026).
