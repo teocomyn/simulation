@@ -11,6 +11,8 @@ A research dossier on the simulation hypothesis, constituted 29 August 2026. The
 - Numbered markdown folders at the repository root are the corpus.
 - `web/` is a Next.js App Router site that reads those files from disk.
 - Do not invent claims. Status labels stay on every assertion.
+- Status labels are written as inline code (`[ÉTABLI]`) and rendered as badges; a label must start with a head word listed in `web/lib/status.ts` (a test enforces it).
+- Per-text dates come from git through `web/lib/data/doc-dates.json` (`npm run dates`), never from a hard-coded constant.
 
 ## Site
 
