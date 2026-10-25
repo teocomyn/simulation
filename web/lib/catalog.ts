@@ -286,7 +286,7 @@ export const docs: Doc[] = [
     file: "09-SOURCES/01-bibliographie.md",
     section: "sources",
     title: "Bibliographie",
-    thesis: "Sources primaires vérifiées le 29 août 2026.",
+    thesis: "Les sources primaires des treize sections, des fondements de 2003 aux préprints de 2026.",
   },
   {
     slug: "sources/fact-check-corpus",

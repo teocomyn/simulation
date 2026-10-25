@@ -3,8 +3,8 @@
 > Deux dossiers que la vulgarisation traite qualitativement et qui sont, en réalité,
 > **quantitatifs à vingt ordres de grandeur près**. Partie I : l'observation sans
 > observateur, avec les taux vérifiés. Partie II : les fluctuations et le problème de la
-> mesure cosmologique — section qui n'a pas pu être confrontée aux sources primaires ;
-> les valeurs y sont dérivées par le dossier et marquées `[À VÉRIFIER]`.
+> mesure cosmologique — section confrontée aux sources primaires le 25 octobre 2026 ;
+> les recalculs propres au dossier y sont marqués `[DÉRIVÉ]`.
 
 ---
 
@@ -177,27 +177,46 @@ n'en découle. `BF = 1`.
 
 # Partie II — Cerveaux de Boltzmann et mesure cosmologique
 
-> ⚠️ Cette partie n'a pas été vérifiée en source primaire.
-> Les dérivations ci-dessous sont celles du dossier ; les références aux valeurs publiées
-> (Page 2008 en particulier) sont marquées `[À VÉRIFIER]`.
+> **Vérifiée le 25 octobre 2026** contre les sources primaires : Page (2007, 2008),
+> Bousso et Freivogel (2007), Dyson, Kleban et Susskind (2002), Boddy, Carroll et
+> Pollack (2016), Carroll (2017). La vérification a corrigé trois points de la version
+> précédente. La température de de Sitter se calcule avec la constante de Hubble
+> asymptotique, pas avec celle d'aujourd'hui. L'exposant d'environ 10⁶⁹ vient de Page
+> 2007, pas de Page 2008. La borne des « 20 milliards d'années » relève d'une mesure
+> globale, pas du patch causal. Les recalculs propres au dossier sont marqués `[DÉRIVÉ]`.
 
 ## 7. Température et entropie de de Sitter
 ```
-T_dS  =  ħ H₀ / (2π k_B)     ≈   2,8 × 10⁻³⁰ K        (H₀ ≈ 2,2 × 10⁻¹⁸ s⁻¹)
-S_dS  =  3π k_B c³ / (Λ G ħ)  ≈   3 × 10¹²² k_B         (voir [08](08-holographie-et-emergence.md) §3)
-t_rec ~  e^{S_dS}  ~  e^{10¹²²}   (temps de récurrence de Poincaré, ordre de grandeur)
+H_Λ   =  H₀ √Ω_Λ               ≈  1,8 × 10⁻¹⁸ s⁻¹       (1/H_Λ ≈ 17,5 Gyr ; Planck 2018 : H₀ = 67,4 km/s/Mpc, Ω_Λ ≈ 0,685)
+T_dS  =  ħ H_Λ / (2π k_B)      ≈  2,2 × 10⁻³⁰ K         (avec H₀ on trouverait 2,7 × 10⁻³⁰ K : température de l'horizon actuel)
+S_dS  =  3π k_B c³ / (Λ G ħ)  =  π k_B c⁵ / (G ħ H_Λ²)  ≈  3,3 × 10¹²² k_B
+t_rec ~  e^{S_dS/k_B}  ~  e^{3 × 10¹²²}   (récurrence de Poincaré ; suppose un espace de Hilbert de dimension finie)
 ```
+Valeurs recalculées par le dossier avec les paramètres Planck 2018 `[DÉRIVÉ]`. Page
+(2008, éq. 14) obtient `S_dS ≈ 3,7 × 10¹²²` avec les paramètres de 2006 ; Dyson, Kleban
+et Susskind (*Disturbing Implications of a Cosmological Constant*, JHEP 0210:011, 2002)
+placent les récurrences à des intervalles `~ e^S`, avec `S` de l'ordre
+de 10¹²⁰. Entropie et aire d'horizon : voir [08](08-holographie-et-emergence.md) §3.
 
 ## 8. Le taux de nucléation d'un cerveau de Boltzmann
 Une fluctuation thermique produisant une structure d'énergie `E` dans un bain à `T_dS`
 est supprimée comme `e^{−E/(k_B T_dS)}`. Pour `E = m c²` avec `m = 1 kg` :
 ```
-E / (k_B T_dS)  =  9 × 10¹⁶ J  /  3,8 × 10⁻⁵³ J   ≈   2,4 × 10⁶⁹
+E / (k_B T_dS)  =  9,0 × 10¹⁶ J  /  3,0 × 10⁻⁵³ J   ≈   3 × 10⁶⁹
 
-Γ_BB  ~  exp( −2 × 10⁶⁹ )        par unité de 4-volume de Hubble     [dérivation du dossier]
+Γ_BB  ~  exp( −3 × 10⁶⁹ )        par unité de 4-volume de Hubble (préfacteur négligeable)
 ```
-Ordre de grandeur cohérent avec les estimations publiées (Page, PRD 78, 063535, 2008,
-*Is our universe likely to decay within 20 billion years?*) `[À VÉRIFIER]`.
+C'est l'estimation publiée par Page pour un cerveau de 1 kg formé par fluctuation
+thermique à la température de de Sitter : facteur `exp(−2 S_E)` avec `S_E ≈ 1,4 × 10⁶⁹`,
+soit `2 S_E ≈ 2,8 × 10⁶⁹` avec les paramètres de 2006 (D. N. Page, *Susskind's Challenge
+to the Hartle-Hawking No-Boundary Proposal and Possible Resolutions*, JCAP 0701:004, 2007,
+arXiv:hep-th/0610199, éq. 4) `[ÉTABLI]`. Bousso et Freivogel (2007) utilisent la même
+échelle pour le temps d'apparition d'un cerveau de Boltzmann dans le patch causal.
+
+**L'exposant dépend du modèle de cerveau.** Page juge plus réaliste un « cerveau bref »,
+fluctuation quantique du vide, avec un exposant de l'ordre de 10⁴², et considère aussi
+un cerveau « moyen » à 10⁵⁰ (même article, éq. 2 et 3). La version précédente de ce
+fichier attribuait l'estimation à Page 2008 : cet article ne la contient pas.
 
 ## 9. La condition de domination
 Dans un vide de de Sitter **éternel**, `Γ_BB > 0` intégré sur un temps infini produit une
@@ -205,18 +224,36 @@ infinité de cerveaux de Boltzmann, qui finissent par dominer numériquement les
 observateurs ordinaires (produits en nombre fini pendant l'ère stellifère). Condition
 pour l'éviter :
 ```
-le vide doit se désintégrer avant que les BB ne dominent :     Γ_decay  ≳  Γ_BB
+patch causal (Bousso et Freivogel 2007) : le vide doit se désintégrer
+avant l'apparition du premier BB :                 Γ_decay  ≳  Γ_BB
 ```
-soit une durée de vie du vide `τ_vac ≲ 1/Γ_BB ~ e^{10⁶⁹}` en unités de Hubble — condition
-extraordinairement faible en apparence, mais qui dépend entièrement de la **mesure**
-choisie (§10). La borne « 20 milliards d'années » de Page provient d'une mesure
-particulière (patch causal) `[À VÉRIFIER]`.
+Soit une durée de vie du vide `τ_vac ≲ 1/Γ_BB ~ e^{3 × 10⁶⁹}` en unités de Hubble :
+condition extraordinairement faible, propre à la description locale.
+
+**La borne de Page vient d'une autre mesure.** Dans *Is Our Universe Likely to Decay
+within 20 Billion Years?* (Phys. Rev. D 78, 063535, 2008 ; arXiv:hep-th/0610079), Page
+compte les observations par 3-volume comobile, une pondération **globale**, et exige que
+l'espérance du 4-volume survivant reste finie. Il en tire un taux de désintégration par
+unité de 4-volume supérieur à `A_min = 9 H_Λ⁴ / (4π) = Λ² / (4π)` en unités de Planck :
+l'univers doit se désintégrer plus vite que son volume ne croît, et cela **quelle que
+soit la valeur de `Γ_BB`**, pourvu qu'elle soit non nulle. Avec les paramètres de 2006,
+la demi-vie future du vide serait inférieure à 19 milliards d'années (15,7 avec les
+valeurs centrales) `[ÉTABLI sous cette mesure]`. Recalcul du dossier avec Planck 2018 :
+environ 18 milliards d'années `[DÉRIVÉ]`. Bousso et Freivogel (*A Paradox in the Global
+Description of the Multiverse*, JHEP 0706:018, 2007 ; arXiv:hep-th/0610132) montrent que
+ce paradoxe disparaît dans la description locale.
 
 **Contre-argument important :** Boddy, Carroll, Pollack (*De Sitter Space Without
-Dynamical Quantum Fluctuations*, Found. Phys. 2016, arXiv:1405.0298) — dans un espace de
-de Sitter **exact**, en état quantique stationnaire, **rien ne fluctue** : les
+Dynamical Quantum Fluctuations*, Found. Phys. 46, 702-735, 2016, arXiv:1405.0298) — dans
+un espace de de Sitter **exact**, en état quantique stationnaire, **rien ne fluctue** : les
 fluctuations exigent une dynamique (décohérence, mesure). Sans dynamique, pas de BB.
-Et Carroll (*Why Boltzmann Brains Are Bad*, arXiv:1702.00850, 2017) : un modèle
+Les auteurs posent eux-mêmes la limite : si le patch de de Sitter est un système fermé à
+espace de Hilbert de dimension finie, les récurrences de Poincaré et les fluctuations de
+Boltzmann ont bien lieu. L'échappatoire suppose donc une dimension infinie, ce qui est
+incompatible avec le `t_rec ~ e^{S_dS}` du §7.
+Et Carroll (*Why Boltzmann Brains Are Bad*, arXiv:1702.00850, 2017 ; repris dans
+Dasgupta, Dotan et Weslake (dir.), *Current Controversies in Philosophy of Science*,
+Routledge, 2020) : un modèle
 prédisant la domination des BB est **cognitivement instable** — il rend improbable que
 les raisonnements ayant conduit à l'adopter soient fiables — donc à rejeter pour cette
 raison, pas parce qu'il serait réfuté.
@@ -231,7 +268,8 @@ régulateurs donnent des réponses différentes :
 |---|---|---|
 | Temps propre | couper à `t = const` le long des géodésiques | **Paradoxe de la jeunesse** : les observateurs les plus récents dominent exponentiellement |
 | Facteur d'échelle | couper à `a = const` | Adoucit la jeunesse ; dépendance au choix de `a` |
-| Patch causal (Bousso) | ne compter qu'à l'intérieur d'un horizon | Dépend du vide terminal ; c'est la mesure de Page |
+| Patch causal (Bousso, PRL 97, 191302, 2006 ; Bousso et Freivogel 2007) | ne compter qu'à l'intérieur d'un horizon | Dépend du vide terminal ; les BB sont évités si `τ_vac < t_BB ~ e^{3 × 10⁶⁹}` |
+| Volume comobile pondéré par la survie (Page, arXiv 2006 ; Phys. Rev. D 2008) | compter par 3-volume comobile | Exige une désintégration plus rapide que la croissance du volume : demi-vie de moins de 19 milliards d'années |
 | Stationnaire | attractif à temps tardif | Sensibilité aux taux de transition entre vides |
 
 **L'identité formelle avec Bostrom, écrite :**
@@ -261,8 +299,9 @@ résout les deux problèmes d'un coup — au prix d'un postulat métaphysique.
 
 | Énoncé | Statut |
 |---|---|
-| `T_dS ≈ 10⁻³⁰ K`, `S_dS ≈ 10¹²² k_B` | `[ÉTABLI]` |
-| `Γ_BB ~ e^{−10⁶⁹}` (ordre de grandeur) | `[DÉRIVÉ, À VÉRIFIER contre Page 2008]` |
+| `T_dS ≈ 2,2 × 10⁻³⁰ K`, `S_dS ≈ 3,3 × 10¹²² k_B` | `[ÉTABLI]` — ordres de grandeur ; valeurs Planck 2018 recalculées par le dossier |
+| `Γ_BB ~ e^{−3 × 10⁶⁹}` pour un cerveau thermique de 1 kg ; exposant de 10⁴² à 10⁶⁹ selon le modèle de cerveau | `[ÉTABLI]` — Page 2007, éq. 2 à 4 |
+| Borne de Page : demi-vie du vide de moins de 19 milliards d'années | `[ÉTABLI sous cette mesure]` — mesure globale par volume comobile, Page 2008 |
 | Les BB dominent en dS éternel sous certaines mesures | `[ÉTABLI sous ces mesures]` |
 | Pas de fluctuations en dS exact stationnaire | `[DÉBATTU]` — Boddy–Carroll–Pollack |
 | Problème de la mesure non résolu | `[ÉTABLI]` — ouvert depuis vingt ans |

@@ -136,7 +136,9 @@ dimension 3. Mais l'encodage exige un ruban infini dans les décimales d'un rée
 exactement ce qu'un substrat à précision finie ne contient pas.
 
 ### 3.5 Le contrepoint — la nature générique est plus décidable que le pire cas
-**Pilatowsky-Cameo & Choi, Nat. Commun. (déc. 2025 ; arXiv:2409.07516)** : la
+**Pilatowsky-Cameo & Choi, *Quantum thermalization must occur in translation-invariant
+systems at high temperature*, Nat. Commun. 17, 75 (déc. 2025), DOI
+10.1038/s41467-025-66777-7 ; arXiv:2409.07516** : la
 thermalisation **doit** se produire pour des systèmes de qubits invariants par
 translation à haute température sans résonances parfaites. L'indécidabilité de
 Shiraishi–Matsumoto est confinée hors de ce régime.

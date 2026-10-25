@@ -9,9 +9,11 @@
 
 ## 1. Le développement le plus important : Wolpert (2025)
 
-**David H. Wolpert (Santa Fe Institute), *Implications of computer science theory for
-the simulation hypothesis*, Journal of Physics: Complexity, 1er décembre 2025.**
-arXiv:2404.16050, v5 révisée le 19 mars 2026. 47 pages + 18 d'annexes.
+**David H. Wolpert (Santa Fe Institute), *What computer science has to say about the
+simulation hypothesis*, Journal of Physics: Complexity 6(4), 045010, 1er décembre 2025.**
+Préprint arXiv:2404.16050, sous le titre *Implications of computer science theory for the
+simulation hypothesis*, v5 révisée le 19 mars 2026 : 47 pages de texte, 5 de références et
+13 d'annexes.
 
 C'est **le premier cadre mathématiquement précis** de ce que signifie « un univers en
 simule un autre ». Exactement ce que le reste du dossier signalait comme manquant.
@@ -360,6 +362,8 @@ supraconducteurs (Sci. Adv. 2025) ; **aucune preuve publiée de NP-dureté de Φ
 **aucune recherche dédiée du motif cubique K₄** dans les données Auger/TA ; CURBy (Nature,
 juin 2025), premier service public d'aléa certifié par Bell.
 
-**Non couvert :** le domaine « cerveaux de Boltzmann / mesure cosmologique » n'a pas pu être
-vérifié en source primaire. La partie II du fichier [10](../11-MATHEMATIQUES/10-decoherence-et-boltzmann-quantitatifs.md)
-est dérivée par le dossier et marquée `[À VÉRIFIER]`.
+**Non couvert lors de ce balayage :** le domaine « cerveaux de Boltzmann / mesure
+cosmologique ». Il a été vérifié ensuite, le 25 octobre 2026, contre Page (2007, 2008),
+Bousso et Freivogel (2007) et Boddy, Carroll et Pollack (2016). Trois corrections en ont
+résulté, détaillées dans la partie II du fichier
+[10](../11-MATHEMATIQUES/10-decoherence-et-boltzmann-quantitatifs.md).

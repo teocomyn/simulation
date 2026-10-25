@@ -150,7 +150,7 @@ Hutter lui-même conclut : la théorie complète du tout **sera subjective** (d�
 **M. P. Müller, *Law without law: from observer states to physics via algorithmic
 information theory*, Quantum 4, 301 (2020).** Suivi : *Algorithmic idealism: what should
 you believe to experience next?*, arXiv:2412.02826, publié dans **Foundations of Physics**
-(2026 — numéro à confirmer). ⚠️ Ne pas confondre avec la série « Algorithmic Idealism »
+56, 11 (2026), DOI 10.1007/s10701-026-00913-1. ⚠️ Ne pas confondre avec la série « Algorithmic Idealism »
 de K. Sienicki (2024-2026), auteur distinct.
 
 ### 5.1 Le postulat unique

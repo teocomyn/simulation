@@ -211,10 +211,13 @@ le mot « simulation ».
 
 ## Ce que le dossier n'a pas vérifié
 
-- La section Boltzmann ([10](10-decoherence-et-boltzmann-quantitatifs.md) Partie II) :
-  agent de vérification en échec, valeurs dérivées.
 - La littérature 2024-2026 sur SSA/SIA et les classes de référence, non balayée.
 - Réception communautaire de Wolpert 2025, trop récente.
-- Statut de publication en revue de : MIP* = RE (preuve intégrale), Findlay 2024,
-  Castilla-Castellano & Lucia 2026, Biswas 2026, Steiner 2026 — tous préprints ou
-  partiels au 29 août 2026.
+
+Vérifié depuis, le 25 octobre 2026 :
+- La section Boltzmann ([10](10-decoherence-et-boltzmann-quantitatifs.md) Partie II),
+  confrontée à Page (2007, 2008) et à Bousso et Freivogel (2007) : trois corrections,
+  détaillées dans le fichier.
+- Les statuts de publication. `MIP* = RE` est accepté aux *Annals of Mathematics*, pas
+  encore paru. Findlay et al. 2024, Castilla-Castellano et Lucia 2026, Biswas et al. 2026
+  et Steiner et al. 2026 restent des préprints.

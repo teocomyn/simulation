@@ -1,9 +1,9 @@
 # Computabilité et auto-simulation — le résultat Wolpert
 
 **David H. Wolpert (Santa Fe Institute), *What computer science has to say about the
-simulation hypothesis*, Journal of Physics: Complexity, 1er décembre 2025.**
-DOI 10.1088/2632-072X/ae1e50. Préprint arXiv:2404.16050, v5 du 19 mars 2026.
-47 pages + 18 d'annexes.
+simulation hypothesis*, Journal of Physics: Complexity 6(4), 045010, 1er décembre 2025.**
+DOI 10.1088/2632-072X/ae1e50. Préprint arXiv:2404.16050, v5 du 19 mars 2026 : 47 pages
+de texte, 5 de références et 13 d'annexes.
 
 C'est **le premier traitement mathématiquement rigoureux** de la question. Il change
 plusieurs choses qu'on croyait acquises — dont une objection très répandue qui se

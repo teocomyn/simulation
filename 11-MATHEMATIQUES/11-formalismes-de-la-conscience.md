@@ -96,7 +96,8 @@ juste intractable). « Incalculable donc faux » est un non-sequitur.
 
 **Findlay, Marshall, Albantakis, David, Mayner, Koch, Tononi, *Dissociating Artificial
 Intelligence from Artificial Consciousness*, arXiv:2412.04571 (v1 déc. 2024, v2 mars 2025).**
-Statut : **préprint** au 29 août 2026 — à signaler comme tel.
+Statut : **préprint**, toujours sans publication en revue au 25 octobre 2026 — à
+signaler comme tel.
 
 Construction explicite : **(a)** un petit système récurrent de portes booléennes, dont on
 calcule la Φ-structure complète ; **(b)** un ordinateur simplifié de type von Neumann

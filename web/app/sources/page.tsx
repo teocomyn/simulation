@@ -5,7 +5,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   title: "Sources",
-  description: "Bibliographie primaire au 29 août 2026 et fact-check des 51 affirmations du corpus.",
+  description: "Bibliographie primaire des treize sections et fact-check des 51 affirmations du corpus de départ.",
   path: "/sources",
 });
 
@@ -13,7 +13,7 @@ export default function SourcesPage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
       <p className="kicker">09 · Vérification</p>
-      <h1 className="display mt-3 text-4xl text-ink">Sources primaires, 29 août 2026</h1>
+      <h1 className="display mt-3 text-4xl text-ink">Sources primaires</h1>
       <p className="mt-4 max-w-2xl text-lg text-muted">
         Toute source secondaire est identifiée comme telle. Les communiqués ne
         remplacent pas les papiers.

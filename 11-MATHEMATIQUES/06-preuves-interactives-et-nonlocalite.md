@@ -49,6 +49,8 @@ la classe retombe exactement à **EXP** (Ito 2010). La puissance dépend finemen
 de corrélations autorisé.
 
 ### 1.3 MIP* = RE (Ji, Natarajan, Vidick, Wright, Yuen, arXiv:2001.04383)
+Accepté aux *Annals of Mathematics* (version finale v4 sur arXiv, 16 octobre 2026), pas
+encore paru au 25 octobre 2026.
 Deux prouveurs non communicants **partageant de l'intrication** de dimension non bornée :
 ```
 MIP*  =  RE        ⊇  { problème de l'arrêt }
@@ -75,8 +77,10 @@ exactement est `Π₂`-complet dans la hiérarchie arithmétique (Mousavi–Nezh
 degré appuyé sur Vidick 2016, où une erreur a été trouvée (erratum). Réparée par
 arXiv:2009.12982 (solidité quantique du test classique de bas degré individuel), intégrée
 en v2 (sept. 2020), v3 (nov. 2022, 223 p.). Version abrégée dans *Communications of the
-ACM* 64(11), 2021. **Consensus : le résultat tient.** Pas de publication intégrale en
-revue achevée identifiée ; pas de formalisation machine.
+ACM* 64(11), 2021. **Consensus : le résultat tient.** Mise à jour du 25 octobre 2026 :
+la v4 (16 octobre 2026, 250 p.) est la version finale, acceptée aux *Annals of
+Mathematics* et pas encore parue ; son commentaire arXiv renvoie à une formalisation en
+Lean du résultat principal.
 
 ### 1.4 Le résultat qui change tout pour l'usage ici : le bruit tue RE
 
